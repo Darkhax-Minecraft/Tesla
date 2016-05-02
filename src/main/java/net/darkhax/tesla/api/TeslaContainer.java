@@ -3,7 +3,7 @@ package net.darkhax.tesla.api;
 /**
  * Provides the essential methods for accepting and storing tesla power.
  */
-public interface PowerContainer {
+public interface TeslaContainer {
     
     /**
      * Attempts to add power to the stored amount.
