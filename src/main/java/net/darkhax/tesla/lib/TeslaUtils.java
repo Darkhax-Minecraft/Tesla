@@ -25,7 +25,7 @@ public class TeslaUtils {
     /**
      * The amount of Telsa in a TeraTesla. One Trillion.
      */
-    public static final long TERATELSA = 1000000000000L;
+    public static final long TERATESLA = 1000000000000L;
     
     /**
      * The amount of Tesla in a PentaTesla. One Quadrilli.on
@@ -33,7 +33,7 @@ public class TeslaUtils {
     public static final long PENTATESLA = 1000000000000000L;
     
     /**
-     * The amount of Tesla in a ExaTesla. One Quintillion.
+     * The amount of Tesla in a ExaTesla. One Quintilian.
      * 
      * The ExaTesla should not be treated as the largest unit of Tesla. The naming scheme can
      * go on indefinitely. The next unit would be a ZettaTesla, followed by YottaTesla,
