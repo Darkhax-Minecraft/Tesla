@@ -34,7 +34,7 @@ version = getVersionFromJava(file("src/main/java/net/darkhax/tesla/lib/Constants
 //Defines the MC environment information.
 minecraft {
 
-    version = "1.9-12.16.0.1863-1.9"
+    version = "1.9-12.16.0.1868-1.9"
     runDir = "run"
     mappings = 'snapshot_20160412'
 }
