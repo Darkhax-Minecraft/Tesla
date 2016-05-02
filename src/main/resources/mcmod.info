@@ -1,0 +1,13 @@
+[{
+	"modid": "tesla",
+	"name": "TESLA",
+	"description": "TBA",
+	"version": "${version}",
+	"mcversion": "${mcversion}",
+	"url": "",
+	"updateUrl": "",
+	"authorList": ["Darkhax"],
+	"logoFile": "",
+	"screenshots": [],
+	"dependencies": []
+}]
