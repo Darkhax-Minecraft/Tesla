@@ -65,22 +65,22 @@ public class BaseTeslaContainer implements ITeslaContainer {
     }
     
     @Override
-    public long addPower (long tesla, boolean shouldAdd) {
+    public long addPower (long tesla, boolean simulated) {
         
         final long acceptedTesla = Math.min(this.capacity - this.stored, Math.min(this.inputRate, tesla));
         
-        if (shouldAdd)
+        if (!simulated)
             this.stored += acceptedTesla;
             
         return acceptedTesla;
     }
     
     @Override
-    public long removePower (long tesla, boolean shouldRemove) {
+    public long removePower (long tesla, boolean simulated) {
         
         final long removedPower = Math.min(this.stored, Math.min(this.outputRate, tesla));
         
-        if (shouldRemove)
+        if (!simulated)
             this.stored -= removedPower;
             
         return removedPower;

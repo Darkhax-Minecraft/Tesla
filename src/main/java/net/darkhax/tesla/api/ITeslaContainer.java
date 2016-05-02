@@ -11,32 +11,30 @@ public interface ITeslaContainer {
      * 
      * @return The amount of tesla power stored in the container.
      */
-    public long getStoredPower ();
+    long getStoredPower ();
     
     /**
      * Attempts to add power to the container.
      * 
      * @param tesla The amount of tesla power to add.
-     * @param shouldAdd Whether or not the added power should count towards the stored energy
-     *            total.
+     * @param simulated Whether or not this is being called as part of a simulation.
      * @return The amount of tesla power that was accepted.
      */
-    public long addPower (long tesla, boolean shouldAdd);
+    long addPower (long tesla, boolean simulated);
     
     /**
      * Attempts to remove power from the container.
      * 
      * @param tesla The amount of tesla power to attempt to remove.
-     * @param shouldRemove Whether or not the removed power should count towards the stored
-     *            energy total.
+     * @param simulated Whether or not this is being called as part of a simulation.
      * @return The amount of tesla power that was removed.
      */
-    public long removePower (long tesla, boolean shouldRemove);
+    long removePower (long tesla, boolean simulated);
     
     /**
      * Gets the maximum amount of tesla power that the container can hold.
      * 
      * @return The maximum amount of tesla power that can be held.
      */
-    public long getCapacity ();
+    long getCapacity ();
 }
