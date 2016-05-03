@@ -30,6 +30,16 @@ public class TeslaContainer implements ITeslaHandler {
     private long outputRate;
     
     /**
+     * A default constructor for the TeslaContainer which starts the capacity off at 5k and the
+     * transfer rate as 50.
+     */
+    public TeslaContainer() {
+        
+        this.capacity = 5000;
+        this.setTransferRate(50);
+    }
+    
+    /**
      * Constructs a new TeslaContainer which can be used to handle tesla power IO.
      * 
      * @param capacity The maximum amount of tesla energy that the container should hold.
