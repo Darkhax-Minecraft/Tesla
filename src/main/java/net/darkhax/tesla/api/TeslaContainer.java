@@ -44,7 +44,7 @@ public class TeslaContainer implements ITeslaHandler {
     }
     
     @Override
-    public long getStoredPower () {
+    public long getStoredPower (EnumFacing side) {
         
         return this.stored;
     }
@@ -64,7 +64,7 @@ public class TeslaContainer implements ITeslaHandler {
     }
     
     @Override
-    public long givePower (long tesla, boolean simulated) {
+    public long givePower (long tesla, EnumFacing side, boolean simulated) {
         
         final long acceptedTesla = Math.min(this.capacity - this.stored, Math.min(this.inputRate, tesla));
         
@@ -75,7 +75,7 @@ public class TeslaContainer implements ITeslaHandler {
     }
     
     @Override
-    public long takePower (long tesla, boolean simulated) {
+    public long takePower (long tesla, EnumFacing side, boolean simulated) {
         
         final long removedPower = Math.min(this.stored, Math.min(this.outputRate, tesla));
         
@@ -86,7 +86,7 @@ public class TeslaContainer implements ITeslaHandler {
     }
     
     @Override
-    public long getCapacity () {
+    public long getCapacity (EnumFacing side) {
         
         return this.capacity;
     }
