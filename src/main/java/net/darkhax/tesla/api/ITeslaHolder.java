@@ -3,6 +3,7 @@ package net.darkhax.tesla.api;
 /**
  * Defines an object that can hold tesla power.
  */
+@Deprecated
 public interface ITeslaHolder {
     
     /**

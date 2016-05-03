@@ -3,6 +3,7 @@ package net.darkhax.tesla.api;
 /**
  * Defines an object that can provide tesla power to other objects.
  */
+@Deprecated
 public interface ITeslaProvider {
     
     /**
