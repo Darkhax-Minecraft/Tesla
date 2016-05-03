@@ -1,14 +1,13 @@
 package net.darkhax.tesla.api;
 
+import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumFacing;
 
 /**
- * A basic implementation of ITeslaContainer. This container satisfies the base requirements
- * for ITeslaContainer an provides some additional functionality such as input/output rates and
- * NBT serialization. This is very similar to the FluidTank implementation offered by Minecraft
- * Forge. This implementation is only a suggestion, other implementations can also be made.
+ * A basic implementation of the ITeslaHandler. Can be used as a tank, similarly to FluidTank.
  */
-public class BaseTeslaContainer implements ITeslaContainer {
+public class TeslaContainer implements ITeslaHandler {
     
     /**
      * The amount of stored tesla power.
@@ -37,7 +36,7 @@ public class BaseTeslaContainer implements ITeslaContainer {
      * @param input The maximum rate of energy that the container can accept.
      * @param output The maximum rate of energy that can be extracted.
      */
-    public BaseTeslaContainer(long capacity, long input, long output) {
+    public TeslaContainer(long capacity, long input, long output) {
         
         this.capacity = capacity;
         this.inputRate = input;
@@ -65,7 +64,7 @@ public class BaseTeslaContainer implements ITeslaContainer {
     }
     
     @Override
-    public long addPower (long tesla, boolean simulated) {
+    public long givePower (long tesla, boolean simulated) {
         
         final long acceptedTesla = Math.min(this.capacity - this.stored, Math.min(this.inputRate, tesla));
         
@@ -76,7 +75,7 @@ public class BaseTeslaContainer implements ITeslaContainer {
     }
     
     @Override
-    public long removePower (long tesla, boolean simulated) {
+    public long takePower (long tesla, boolean simulated) {
         
         final long removedPower = Math.min(this.stored, Math.min(this.outputRate, tesla));
         
@@ -99,7 +98,7 @@ public class BaseTeslaContainer implements ITeslaContainer {
      * @param capacity The new capacity for the container.
      * @return The instance of the container being updated.
      */
-    public BaseTeslaContainer setCapacity (long capacity) {
+    public TeslaContainer setCapacity (long capacity) {
         
         this.capacity = capacity;
         
@@ -125,7 +124,7 @@ public class BaseTeslaContainer implements ITeslaContainer {
      * @param rate The amount of tesla power to accept at a time.
      * @return The instance of the container being updated.
      */
-    public BaseTeslaContainer setInputRate (long rate) {
+    public TeslaContainer setInputRate (long rate) {
         
         this.inputRate = rate;
         return this;
@@ -147,7 +146,7 @@ public class BaseTeslaContainer implements ITeslaContainer {
      * @param rate The amount of tesla power that can be extracted.
      * @return The instance of the container being updated.
      */
-    public BaseTeslaContainer setOutputRate (long rate) {
+    public TeslaContainer setOutputRate (long rate) {
         
         this.outputRate = rate;
         return this;
@@ -160,60 +159,41 @@ public class BaseTeslaContainer implements ITeslaContainer {
      * @param rate The input/output rate for the tesla container.
      * @return The instance of the container being updated.
      */
-    public BaseTeslaContainer setTransferRate (long rate) {
+    public TeslaContainer setTransferRate (long rate) {
         
         this.setInputRate(rate);
         this.setOutputRate(rate);
         return this;
     }
     
-    /**
-     * Reads important data for the container from an NBTTagCompound.
-     * 
-     * @param dataTag The NBT compound tag to read data from.
-     * @param readAll Whether or not capacity and IO rates should also be read.
-     * @return The instance of the container being updated.
-     */
-    public BaseTeslaContainer readFromNBT (NBTTagCompound dataTag, boolean readAll) {
+    @Override
+    public NBTBase writeNBT (EnumFacing side) {
         
-        this.stored = dataTag.getLong("TeslaPower");
-        
-        if (readAll) {
-            
-            if (dataTag.hasKey("TeslaCapacity"))
-                this.capacity = dataTag.getLong("TeslaCapacity");
-                
-            if (dataTag.hasKey("TeslaInput"))
-                this.inputRate = dataTag.getLong("TeslaInput");
-                
-            if (dataTag.hasKey("TeslaOutput"))
-                this.outputRate = dataTag.getLong("TeslaOutput");
-        }
-        
-        if (this.stored > this.capacity)
-            this.stored = this.capacity;
-            
-        return this;
-    }
-    
-    /**
-     * Writes important data for the container to an NBTTagCompound.
-     * 
-     * @param dataTag The NBT compound to write data to.
-     * @param writeAll Whether or not capacity and IO rates should also be written.
-     * @return The instance of the container being written.
-     */
-    public NBTTagCompound writeToNBT (NBTTagCompound dataTag, boolean writeAll) {
-        
+        final NBTTagCompound dataTag = new NBTTagCompound();
         dataTag.setLong("TeslaPower", this.stored);
-        
-        if (writeAll) {
-            
-            dataTag.setLong("TeslaCapacity", this.capacity);
-            dataTag.setLong("TeslaInput", this.inputRate);
-            dataTag.setLong("TeslaOutput", this.outputRate);
-        }
+        dataTag.setLong("TeslaCapacity", this.capacity);
+        dataTag.setLong("TeslaInput", this.inputRate);
+        dataTag.setLong("TeslaOutput", this.outputRate);
         
         return dataTag;
+    }
+    
+    @Override
+    public void readNBT (EnumFacing side, NBTBase nbt) {
+        
+        final NBTTagCompound dataTag = (NBTTagCompound) nbt;
+        this.stored = dataTag.getLong("TeslaPower");
+        
+        if (dataTag.hasKey("TeslaCapacity"))
+            this.capacity = dataTag.getLong("TeslaCapacity");
+            
+        if (dataTag.hasKey("TeslaInput"))
+            this.inputRate = dataTag.getLong("TeslaInput");
+            
+        if (dataTag.hasKey("TeslaOutput"))
+            this.outputRate = dataTag.getLong("TeslaOutput");
+            
+        if (this.stored > this.capacity)
+            this.stored = this.capacity;
     }
 }
