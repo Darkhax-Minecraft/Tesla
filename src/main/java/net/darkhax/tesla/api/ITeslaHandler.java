@@ -59,4 +59,20 @@ public interface ITeslaHandler {
      * @param nbt A NBT that holds the data. Should never be null.
      */
     public void readNBT (EnumFacing side, NBTBase nbt);
+    
+    /**
+     * Checks if a given side is a valid input face..
+     * 
+     * @param side The side being checked.
+     * @return Whether or not the side is a valid input side.
+     */
+    boolean isInputSide (EnumFacing side);
+    
+    /**
+     * Checks if a given side is a valid output face.
+     * 
+     * @param side The side being checked.
+     * @return Whether or not the side is a valid output side.
+     */
+    boolean isOutputSide (EnumFacing side);
 }

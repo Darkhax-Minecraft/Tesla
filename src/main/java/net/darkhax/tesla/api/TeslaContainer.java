@@ -196,4 +196,16 @@ public class TeslaContainer implements ITeslaHandler {
         if (this.stored > this.capacity)
             this.stored = this.capacity;
     }
+    
+    @Override
+    public boolean isInputSide (EnumFacing side) {
+        
+        return true;
+    }
+    
+    @Override
+    public boolean isOutputSide (EnumFacing side) {
+        
+        return true;
+    }
 }
