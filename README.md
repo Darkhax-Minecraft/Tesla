@@ -34,7 +34,7 @@ Alternatively, if you are using [Maven](https://maven.apache.org/download.cgi) t
 
 Getting Started
 ===============
-The best way to use the Tesla API is through the new [Capability system](http://mcforge.readthedocs.io/en/latest/datastorage/capabilities/) in Minecraft Forge. The idea for the capability system is that capability handlers can be attached to supported types (TileEntity, ItemStack, Entity). When a capability is attached, it has access to all of the [ITeslaHandler](https://github.com/Darkhax-Minecraft/Tesla/blob/master/src/main/java/net/darkhax/tesla/api/ITeslaHandler.java) code. The default ITeslaHandler is the [TeslaContainer]() which handles basic tesla power functionality. An example of this system in action can be found here. TODO actually add an example X)
+The best way to use the Tesla API is through the new [Capability system](http://mcforge.readthedocs.io/en/latest/datastorage/capabilities/) in Minecraft Forge. The idea for the capability system is that capability handlers can be attached to supported types (TileEntity, ItemStack, Entity). When a capability is attached, it has access to all of the [ITeslaHandler](https://github.com/Darkhax-Minecraft/Tesla/blob/master/src/main/java/net/darkhax/tesla/api/ITeslaHandler.java) code. The default ITeslaHandler is the [TeslaContainer](https://github.com/Darkhax-Minecraft/Tesla/blob/master/src/main/java/net/darkhax/tesla/api/TeslaContainer.java) which handles basic tesla power functionality. An example of this system in action can be found here. TODO actually add an example X)
 
 Credits
 =======
