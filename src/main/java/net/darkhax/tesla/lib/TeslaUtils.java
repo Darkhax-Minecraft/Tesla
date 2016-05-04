@@ -1,5 +1,7 @@
 package net.darkhax.tesla.lib;
 
+import net.minecraft.util.text.translation.I18n;
+
 public class TeslaUtils {
     
     /**
@@ -47,7 +49,7 @@ public class TeslaUtils {
      * only rounded to one decimal place.
      * 
      * @param tesla The amount of Tesla units to display.
-     * @return String A human readable display of the Tesla units.
+     * @return A human readable display of the Tesla units.
      */
     public static String getDisplayableTeslaCount (long tesla) {
         
@@ -55,7 +57,37 @@ public class TeslaUtils {
             return tesla + " T";
             
         final int exp = (int) (Math.log(tesla) / Math.log(1000));
-        final char unitType = "KMGTPEZYBG".charAt(exp - 1);
+        final char unitType = "KMGTPE".charAt(exp - 1);
         return String.format("%.1f %sT", tesla / Math.pow(1000, exp), unitType);
+    }
+    
+    /**
+     * Gets the abbreviated name of the best unit to describe the provided power. For example,
+     * anything less than 1000 will return t for tesla, while anything between 999 and one
+     * million will return kt for kilo tesla. This method has support for up to Exatesla.
+     * 
+     * @param tesla The amount of Tesla to get the unit for.
+     * @return The abbreviated name for the unit used to describe the provided power amount.
+     */
+    public static String getUnitType (long tesla) {
+        
+        if (tesla < 1000)
+            return tesla + "t";
+            
+        final int exp = (int) (Math.log(tesla) / Math.log(1000));
+        return "kmgtpe".charAt(exp - 1) + "t";
+    }
+    
+    /**
+     * Gets the name of the the power unit that best represents the amount of provided power.
+     * The name will be translated to the local language, or english if that language is not
+     * yet supported.
+     * 
+     * @param tesla The amount of Tesla to get the unit name for.
+     * @return The name of the power unit that best represents the amount of power provided.
+     */
+    public static String getLocalizedUnitType (long tesla) {
+        
+        return I18n.translateToLocal("unit.tesla." + getUnitType(tesla));
     }
 }

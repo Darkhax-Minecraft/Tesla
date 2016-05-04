@@ -1,0 +1,10 @@
+#English translations for Tesla
+
+#Energy Units
+unit.tesla.t=Tesla
+unit.tesla.kt=KiloTesla
+unit.tesla.mt=MegaTesla
+unit.tesla.gt=GigaTesla
+unit.tesla.tt=TeraTesla
+unit.tesla.pt=PentaTesla
+unit.tesla.et=ExaTesla
