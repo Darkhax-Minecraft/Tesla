@@ -1,6 +1,6 @@
 package net.darkhax.teslatest.tileentity;
 
-import net.darkhax.tesla.api.InfiniteTeslaConsumer;
+import net.darkhax.tesla.api.InfiniteTeslaProducer;
 import net.darkhax.tesla.capability.TeslaStorage;
 import net.darkhax.tesla.lib.TeslaUtils;
 import net.minecraft.tileentity.TileEntity;
@@ -18,7 +18,7 @@ public class TileEntityCreativePower extends TileEntity implements ITickable {
     public <T> T getCapability (Capability<T> capability, EnumFacing facing) {
         
         if (capability == TeslaStorage.TESLA_HANDLER_CAPABILITY)
-            return (T) new InfiniteTeslaConsumer();
+            return (T) new InfiniteTeslaProducer();
             
         return super.getCapability(capability, facing);
     }
