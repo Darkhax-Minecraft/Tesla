@@ -46,6 +46,9 @@ The Tesla API functions similarly to other well known power API, however there a
 **Are there any standards for energy conversion?**   
 The Tesla API does not enforce any energy standard, however for the sake of consistency, mod authors are encouraged to use the same energy scales as the RF system. Following this standard will allow for mods to easily support both power systems.
 
+**Why did you make this API?**   
+The Tesla API was originally made for the fun of it, however it recieved a lot of unexpected attention from others in the community. The RF API is currently in a limbo state, with only unofficial ports for the latest update, so I decided to publicly release the API to provide tech mods with a viable power solution for 1.9.
+
 **Should the Tesla API be bundled with other mods?**   
 Bundling the API of other mods has always seemed a bit weird to me. With the use of Gradle and the [Optional annotation](http://cazzar.net/tutorials/fml/optional-annotations-the-usages/) there really isn't a legitimate need to do so. SeargeDP summarized it up well in [this](https://twitter.com/seargedp/status/473895192387649536) tweet. That being said, the Tesla API can be bundled with other mods, and supports Minecraft Forge's [API system](https://github.com/Minalien/BlogArchive/blob/master/ForgeTutorials/Spotlight__API_Annotation.md). If you feel that you have a legitimate reason to bundle the API, or you are unfamiliar with adding support without bundling, don't hesistate to come and talk at the [#Tesla-API room on Esper.net](http://webchat.esper.net/?nick=&channels=tesla-api).
 
