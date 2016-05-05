@@ -1,6 +1,15 @@
 package net.darkhax.tesla.lib;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import net.darkhax.tesla.api.ITeslaHandler;
+import net.darkhax.tesla.capability.TeslaStorage;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.translation.I18n;
+import net.minecraft.world.World;
 
 public class TeslaUtils {
     
@@ -89,5 +98,60 @@ public class TeslaUtils {
     public static String getLocalizedUnitType (long tesla) {
         
         return I18n.translateToLocal("unit.tesla." + getUnitType(tesla));
+    }
+    
+    /**
+     * Gets a List of all the ITeslaHandlers for the blocks that are touching the passed
+     * position. For a valid ITeslaHandler to be detected, it must be attached to a valid
+     * TileEntity that is directly touching the passed position.
+     * 
+     * @param world The world to run the check in.
+     * @param pos The position to search around.
+     * @return A List of all valid ITeslaHandlers that are around the passed position.
+     */
+    public static List<ITeslaHandler> getConnectedTeslaHandlers (World world, BlockPos pos) {
+        
+        List<ITeslaHandler> teslaHandlers = new ArrayList<ITeslaHandler>();
+        
+        for (EnumFacing facing : EnumFacing.values()) {
+            
+            final TileEntity tile = world.getTileEntity(pos.offset(facing));
+            
+            if (tile != null && !tile.isInvalid() && tile.hasCapability(TeslaStorage.TESLA_HANDLER_CAPABILITY, facing))
+                teslaHandlers.add(tile.getCapability(TeslaStorage.TESLA_HANDLER_CAPABILITY, facing));
+        }
+        
+        return teslaHandlers;
+    }
+    
+    /**
+     * Attempts to distribute power to all blocks that are directly touching the passed
+     * possession. This will check to make sure that each tile is a valid tasla handler and
+     * that the direction is a valid input side.
+     * 
+     * @param world The world to distribute power within.
+     * @param pos The position to distribute power around.
+     * @param amount The amount of power to distribute to each individual tile.
+     * @param simulated Whether or not this is being called as part of a simulation.
+     * @return The amount of power that was accepted by the handlers.
+     */
+    public static long distributePowerEqually (World world, BlockPos pos, long amount, boolean simulated) {
+        
+        long consumedPower = 0L;
+        
+        for (EnumFacing facing : EnumFacing.values()) {
+            
+            final TileEntity tile = world.getTileEntity(pos.offset(facing));
+            
+            if (tile != null && !tile.isInvalid() && tile.hasCapability(TeslaStorage.TESLA_HANDLER_CAPABILITY, facing)) {
+                
+                final ITeslaHandler teslaHandler = tile.getCapability(TeslaStorage.TESLA_HANDLER_CAPABILITY, facing);
+                
+                if (teslaHandler.isInputSide(facing))
+                    consumedPower += teslaHandler.givePower(amount, facing, simulated);
+            }
+        }
+        
+        return consumedPower;
     }
 }
