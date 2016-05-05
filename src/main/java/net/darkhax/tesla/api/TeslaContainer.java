@@ -40,6 +40,18 @@ public class TeslaContainer implements ITeslaHandler {
     }
     
     /**
+     * Constructs a new TeslaContainer directly from save data.
+     * 
+     * @param side The side of the handler that is being read for. This is typically used for
+     *            block based implementations.
+     * @return A NBT that holds all critical information.
+     */
+    public TeslaContainer(EnumFacing side, NBTBase nbt) {
+        
+        this.readNBT(side, nbt);
+    }
+    
+    /**
      * Constructs a new TeslaContainer which can be used to handle tesla power IO.
      * 
      * @param capacity The maximum amount of tesla energy that the container should hold.
