@@ -111,9 +111,9 @@ public class TeslaUtils {
      */
     public static List<ITeslaHandler> getConnectedTeslaHandlers (World world, BlockPos pos) {
         
-        List<ITeslaHandler> teslaHandlers = new ArrayList<ITeslaHandler>();
+        final List<ITeslaHandler> teslaHandlers = new ArrayList<ITeslaHandler>();
         
-        for (EnumFacing facing : EnumFacing.values()) {
+        for (final EnumFacing facing : EnumFacing.values()) {
             
             final TileEntity tile = world.getTileEntity(pos.offset(facing));
             
@@ -126,8 +126,8 @@ public class TeslaUtils {
     
     /**
      * Attempts to distribute power to all blocks that are directly touching the passed
-     * possession. This will check to make sure that each tile is a valid tasla handler and
-     * that the direction is a valid input side.
+     * position. This will check to make sure that each tile is a valid tasla handler and that
+     * the direction is a valid input side.
      * 
      * @param world The world to distribute power within.
      * @param pos The position to distribute power around.
@@ -139,7 +139,7 @@ public class TeslaUtils {
         
         long consumedPower = 0L;
         
-        for (EnumFacing facing : EnumFacing.values()) {
+        for (final EnumFacing facing : EnumFacing.values()) {
             
             final TileEntity tile = world.getTileEntity(pos.offset(facing));
             
@@ -149,6 +149,36 @@ public class TeslaUtils {
                 
                 if (teslaHandler.isInputSide(facing))
                     consumedPower += teslaHandler.givePower(amount, facing, simulated);
+            }
+        }
+        
+        return consumedPower;
+    }
+    
+    /**
+     * Attempts to consume power from all blocks that are directly touching the passed
+     * position.
+     * 
+     * @param world The world to take power within.
+     * @param pos The position to take power around.
+     * @param amount The amount of power to take from each tile.
+     * @param simulated Whether or not this is being called as part of a simulation.
+     * @return The amount of power that was taken from the handlers.
+     */
+    public static long consumePowerEqually (World world, BlockPos pos, long amount, boolean simulated) {
+        
+        long consumedPower = 0L;
+        
+        for (final EnumFacing facing : EnumFacing.values()) {
+            
+            final TileEntity tile = world.getTileEntity(pos.offset(facing));
+            
+            if (tile != null && !tile.isInvalid() && tile.hasCapability(TeslaStorage.TESLA_HANDLER_CAPABILITY, facing)) {
+                
+                final ITeslaHandler teslaHandler = tile.getCapability(TeslaStorage.TESLA_HANDLER_CAPABILITY, facing);
+                
+                if (teslaHandler.isOutputSide(facing))
+                    consumedPower += teslaHandler.takePower(amount, facing, simulated);
             }
         }
         
