@@ -1,0 +1,10 @@
+#English translations for Dank
+
+#Energy Units
+unit.dank.t=Dank
+unit.dank.kt=KiloDank
+unit.dank.mt=MegaDank
+unit.dank.gt=GigaDank
+unit.dank.tt=TeraDank
+unit.dank.pt=PentaDank
+unit.dank.et=ExaDank
