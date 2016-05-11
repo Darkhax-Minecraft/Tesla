@@ -29,12 +29,15 @@ public class BlockAnalyzer extends BlockContainer {
     @Override
     public boolean onBlockActivated (World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
         
-        final TileEntity tile = worldIn.getTileEntity(pos);
-        
-        if (tile.hasCapability(TeslaCapabilities.CAPABILITY_HOLDER, side)) {
+        if (!worldIn.isRemote) {
             
-            final ITeslaHolder holder = tile.getCapability(TeslaCapabilities.CAPABILITY_HOLDER, side);
-            playerIn.addChatMessage(new TextComponentString("I have " + holder.getStoredPower() + " / " + holder.getCapacity() + " power."));
+            final TileEntity tile = worldIn.getTileEntity(pos);
+            
+            if (tile.hasCapability(TeslaCapabilities.CAPABILITY_HOLDER, side)) {
+                
+                final ITeslaHolder holder = tile.getCapability(TeslaCapabilities.CAPABILITY_HOLDER, side);
+                playerIn.addChatMessage(new TextComponentString("I have " + holder.getStoredPower() + " / " + holder.getCapacity() + " power."));
+            }
         }
         
         return super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
