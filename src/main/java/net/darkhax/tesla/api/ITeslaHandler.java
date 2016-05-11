@@ -5,7 +5,11 @@ import net.minecraft.util.EnumFacing;
 
 /**
  * An interface used by objects that can handle Tesla power.
+ * 
+ * @deprecated The tesla capability is being split into three separate capabilities. Do not use
+ *             this capability! It will be removed in 1.0.3
  */
+@Deprecated
 public interface ITeslaHandler {
     
     /**
