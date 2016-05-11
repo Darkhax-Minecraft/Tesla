@@ -18,6 +18,7 @@ public interface ITeslaHandler {
      * @param side The side being checked.
      * @return The amount of tesla power stored by the handler.
      */
+    @Deprecated
     long getStoredPower (EnumFacing side);
     
     /**
@@ -26,6 +27,7 @@ public interface ITeslaHandler {
      * @param side The side being checked.
      * @return The maximum amount of tesla power that can be held by the handler.
      */
+    @Deprecated
     long getCapacity (EnumFacing side);
     
     /**
@@ -36,6 +38,7 @@ public interface ITeslaHandler {
      * @param simulated Whether or not this is being called as part of a simulation.
      * @return The amount of power that was actually taken.
      */
+    @Deprecated
     long takePower (long power, EnumFacing side, boolean simulated);
     
     /**
@@ -46,6 +49,7 @@ public interface ITeslaHandler {
      * @param simulated Whether or not this is being called as part of a simulation.
      * @return The amount of power that was accepted by the handler.
      */
+    @Deprecated
     long givePower (long power, EnumFacing side, boolean simulated);
     
     /**
@@ -56,6 +60,7 @@ public interface ITeslaHandler {
      * @return A NBT that holds all critical information. Null can be returned if no data
      *         storage is needed.
      */
+    @Deprecated
     public NBTBase writeNBT (EnumFacing side);
     
     /**
@@ -66,6 +71,7 @@ public interface ITeslaHandler {
      *            based implementations.
      * @param nbt A NBT that holds the data. Should never be null.
      */
+    @Deprecated
     public void readNBT (EnumFacing side, NBTBase nbt);
     
     /**
@@ -74,6 +80,7 @@ public interface ITeslaHandler {
      * @param side The side being checked.
      * @return Whether or not the side is a valid input side.
      */
+    @Deprecated
     boolean isInputSide (EnumFacing side);
     
     /**
@@ -82,5 +89,6 @@ public interface ITeslaHandler {
      * @param side The side being checked.
      * @return Whether or not the side is a valid output side.
      */
+    @Deprecated
     boolean isOutputSide (EnumFacing side);
 }

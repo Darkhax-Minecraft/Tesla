@@ -6,7 +6,11 @@ import net.minecraft.util.EnumFacing;
 
 /**
  * A basic implementation of the ITeslaHandler. Can be used as a tank, similarly to FluidTank.
+ * 
+ * @deprecated The tesla capability is being split into three separate capabilities. Do not use
+ *             this capability! It will be removed in 1.0.3
  */
+@Deprecated
 public class TeslaContainer implements ITeslaHandler {
     
     /**
