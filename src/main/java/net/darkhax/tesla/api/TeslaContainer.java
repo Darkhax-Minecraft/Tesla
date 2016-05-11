@@ -41,14 +41,12 @@ public class TeslaContainer implements ITeslaHandler {
     
     /**
      * Constructs a new TeslaContainer directly from save data.
-     * 
-     * @param side The side of the handler that is being read for. This is typically used for
-     *            block based implementations.
+     *
      * @return A NBT that holds all critical information.
      */
-    public TeslaContainer(EnumFacing side, NBTBase nbt) {
+    public TeslaContainer(NBTTagCompound nbt) {
         
-        this.readNBT(side, nbt);
+        this.deserializeNBT(nbt);
     }
     
     /**
@@ -189,7 +187,7 @@ public class TeslaContainer implements ITeslaHandler {
     }
     
     @Override
-    public NBTBase writeNBT (EnumFacing side) {
+    public NBTBase serializeNBT () {
         
         final NBTTagCompound dataTag = new NBTTagCompound();
         dataTag.setLong("TeslaPower", this.stored);
@@ -201,8 +199,8 @@ public class TeslaContainer implements ITeslaHandler {
     }
     
     @Override
-    public void readNBT (EnumFacing side, NBTBase nbt) {
-        
+    public void deserializeNBT (NBTBase nbt) {
+
         final NBTTagCompound dataTag = (NBTTagCompound) nbt;
         this.stored = dataTag.getLong("TeslaPower");
         

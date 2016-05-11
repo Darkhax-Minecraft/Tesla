@@ -36,7 +36,7 @@ public class TileEntityAnalyzer extends TileEntity implements ITickable {
         // doesn't care about side, so I am using null. You would use the correct EnumFacing
         // value if the ITeslaHandler implementation that you are using actually cares about
         // the side.
-        this.container = new TeslaContainer(null, compound.getTag("TeslaContainer"));
+        this.container = new TeslaContainer(compound.getCompoundTag("TeslaContainer"));
     }
     
     @Override
@@ -47,7 +47,7 @@ public class TileEntityAnalyzer extends TileEntity implements ITickable {
         // Writes the ITeslaHandler to the TileEntity NBT. Just like the read method, we are
         // using null for the face, because the default ITeslaHandler does not care about the
         // direction.
-        compound.setTag("TeslaContainer", this.container.writeNBT(null));
+        compound.setTag("TeslaContainer", this.container.serializeNBT());
     }
     
     @Override
