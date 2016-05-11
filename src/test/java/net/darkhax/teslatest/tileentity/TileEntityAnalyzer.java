@@ -1,11 +1,10 @@
 package net.darkhax.teslatest.tileentity;
 
-import net.darkhax.tesla.api.TeslaContainer;
-import net.darkhax.tesla.capability.TeslaStorage;
+import net.darkhax.tesla.api.BaseTeslaContainer;
+import net.darkhax.tesla.capability.TeslaCapabilities;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ITickable;
 import net.minecraftforge.common.capabilities.Capability;
 
 /**
@@ -14,17 +13,17 @@ import net.minecraftforge.common.capabilities.Capability;
  * class is also used as the default example of how to write a TileEntity that can use Tesla
  * power.
  */
-public class TileEntityAnalyzer extends TileEntity implements ITickable {
+public class TileEntityAnalyzer extends TileEntity {
     
-    // An implementation of ITeslaHandler which handles all of the tesla related logic. This
-    // can be replaced with your own custom implementation or one of the default
-    // implementations provided by the base API.
-    private TeslaContainer container;
+    // An instance of something that implements ITeslaConsumer, ITeslaProducer or
+    // ITeslaHandler. In this case we use the BaseTeslaContainer which makes use of all three.
+    // The purpose of this instance is to handle all tesla related logic for the TileEntity.
+    private BaseTeslaContainer container;
     
     public TileEntityAnalyzer() {
         
         // Initializes the container. Very straight forward.
-        this.container = new TeslaContainer();
+        this.container = new BaseTeslaContainer();
     }
     
     @Override
@@ -32,11 +31,11 @@ public class TileEntityAnalyzer extends TileEntity implements ITickable {
         
         super.readFromNBT(compound);
         
-        // Reads the ITeslaHandler from the TileEntity NBT. The default handler being used
-        // doesn't care about side, so I am using null. You would use the correct EnumFacing
-        // value if the ITeslaHandler implementation that you are using actually cares about
-        // the side.
-        this.container = new TeslaContainer(null, compound.getTag("TeslaContainer"));
+        // It is important for the power being stored to be persistent. The BaseTeslaContainer
+        // includes a method to make reading one from a compound tag very easy. This method is
+        // completely optional though, you can handle saving however you prefer. You could even
+        // choose not to, but then power won't be saved when you close the game.
+        this.container = new BaseTeslaContainer(compound.getCompoundTag("TeslaContainer"));
     }
     
     @Override
@@ -44,21 +43,24 @@ public class TileEntityAnalyzer extends TileEntity implements ITickable {
         
         super.writeToNBT(compound);
         
-        // Writes the ITeslaHandler to the TileEntity NBT. Just like the read method, we are
-        // using null for the face, because the default ITeslaHandler does not care about the
-        // direction.
-        compound.setTag("TeslaContainer", this.container.writeNBT(null));
+        // It is important for the power being stored to be persistent. The BaseTeslaContainer
+        // includes a method to make writing one to a compound tag very easy. This method is
+        // completely optional though, you can handle saving however you prefer. You could even
+        // choose not to, but then power won't be saved when you close the game.
+        compound.setTag("TeslaContainer", this.container.serializeNBT());
     }
     
     @Override
     @SuppressWarnings("unchecked")
     public <T> T getCapability (Capability<T> capability, EnumFacing facing) {
         
-        // Provides access to the ITeslaHandler object. This is how other things will connect
-        // to this TileEntities ITeslaHandler. TeslaStorage.TESLA_HANDLER_CAPANILITY is a
-        // constant reference to the Tesla capability. This is used to verify that the thing
-        // requesting the capability is requesting the tesla one.
-        if (capability == TeslaStorage.TESLA_HANDLER_CAPABILITY)
+        // This method is where other things will try to access your TileEntity's Tesla
+        // capability. In the case of the analyzer, is a consumer, producer and holder so we
+        // can allow requests that are looking for any of those things. This example also does
+        // not care about which side is being accessed, however if you wanted to restrict which
+        // side can be used, for example only allow power input through the back, that could be
+        // done here.
+        if (capability == TeslaCapabilities.CAPABILITY_CONSUMER || capability == TeslaCapabilities.CAPABILITY_PRODUCER || capability == TeslaCapabilities.CAPABILITY_HOLDER)
             return (T) this.container;
             
         return super.getCapability(capability, facing);
@@ -67,21 +69,15 @@ public class TileEntityAnalyzer extends TileEntity implements ITickable {
     @Override
     public boolean hasCapability (Capability<?> capability, EnumFacing facing) {
         
-        // This works similarly to the getter method above. It just checks to see if the
-        // TileEntity has an ITeslaHandler.
-        if (capability == TeslaStorage.TESLA_HANDLER_CAPABILITY)
+        // This method replaces the instanceof checks that would be used in an interface based
+        // system. It can be used by other things to see if the TileEntity uses a capability or
+        // not. This example is a Consumer, Producer and Holder, so we return true for all
+        // three. This can also be used to restrict access on certain sides, for example if you
+        // only accept power input from the bottom of the block, you would only return true for
+        // Consumer if the facing parameter was down.
+        if (capability == TeslaCapabilities.CAPABILITY_CONSUMER || capability == TeslaCapabilities.CAPABILITY_PRODUCER || capability == TeslaCapabilities.CAPABILITY_HOLDER)
             return true;
             
         return super.hasCapability(capability, facing);
-    }
-    
-    @Override
-    public void update () {
-        
-        // This tile entity will spam the console with how much power it has every tick. In
-        // other tile entities this could be used to send power to a tile, or take it from
-        // another tile. This isn't required for the actual Tesla tile.
-        if (!this.worldObj.isRemote)
-            System.out.println("I have " + this.container.getStoredPower(EnumFacing.UP) + "/" + this.container.getCapacity(EnumFacing.UP) + " power. I am at " + this.pos.toString());
     }
 }
