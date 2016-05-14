@@ -7,6 +7,11 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.Capability.IStorage;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 
+/**
+ * @deprecated The tesla capability is being split into three separate capabilities. Do not use
+ *             this capability! It will be removed in 1.0.3
+ */
+@Deprecated
 public class TeslaStorage<T extends ITeslaHandler> implements IStorage<ITeslaHandler> {
     
     @CapabilityInject(ITeslaHandler.class)

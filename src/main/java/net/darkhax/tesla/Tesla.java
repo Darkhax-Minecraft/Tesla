@@ -1,8 +1,12 @@
 package net.darkhax.tesla;
 
-import net.darkhax.tesla.api.ITeslaHandler;
-import net.darkhax.tesla.api.TeslaContainer;
-import net.darkhax.tesla.capability.TeslaStorage;
+import net.darkhax.tesla.api.BaseTeslaContainer;
+import net.darkhax.tesla.api.ITeslaConsumer;
+import net.darkhax.tesla.api.ITeslaHolder;
+import net.darkhax.tesla.api.ITeslaProducer;
+import net.darkhax.tesla.capability.TeslaCapabilities.CapabilityTeslaConsumer;
+import net.darkhax.tesla.capability.TeslaCapabilities.CapabilityTeslaHolder;
+import net.darkhax.tesla.capability.TeslaCapabilities.CapabilityTeslaProducer;
 import net.darkhax.tesla.lib.Constants;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.Mod;
@@ -18,6 +22,8 @@ public class Tesla {
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
         
-        CapabilityManager.INSTANCE.register(ITeslaHandler.class, new TeslaStorage<ITeslaHandler>(), TeslaContainer.class);
+        CapabilityManager.INSTANCE.register(ITeslaConsumer.class, new CapabilityTeslaConsumer<ITeslaConsumer>(), BaseTeslaContainer.class);
+        CapabilityManager.INSTANCE.register(ITeslaProducer.class, new CapabilityTeslaProducer<ITeslaProducer>(), BaseTeslaContainer.class);
+        CapabilityManager.INSTANCE.register(ITeslaHolder.class, new CapabilityTeslaHolder<ITeslaHolder>(), BaseTeslaContainer.class);
     }
 }
