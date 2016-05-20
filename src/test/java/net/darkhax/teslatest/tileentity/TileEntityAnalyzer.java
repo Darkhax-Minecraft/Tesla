@@ -39,15 +39,14 @@ public class TileEntityAnalyzer extends TileEntity {
     }
     
     @Override
-    public void writeToNBT (NBTTagCompound compound) {
-        
-        super.writeToNBT(compound);
+    public NBTTagCompound writeToNBT (NBTTagCompound compound) {
         
         // It is important for the power being stored to be persistent. The BaseTeslaContainer
         // includes a method to make writing one to a compound tag very easy. This method is
         // completely optional though, you can handle saving however you prefer. You could even
         // choose not to, but then power won't be saved when you close the game.
         compound.setTag("TeslaContainer", this.container.serializeNBT());
+        return super.writeToNBT(compound);
     }
     
     @Override

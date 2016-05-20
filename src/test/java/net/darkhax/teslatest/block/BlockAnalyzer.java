@@ -21,8 +21,8 @@ public class BlockAnalyzer extends BlockContainer {
     
     public BlockAnalyzer() {
         
-        super(Material.rock);
-        this.setCreativeTab(CreativeTabs.tabRedstone);
+        super(Material.ROCK);
+        this.setCreativeTab(CreativeTabs.REDSTONE);
         this.setUnlocalizedName("teslatest.analyzer");
     }
     
