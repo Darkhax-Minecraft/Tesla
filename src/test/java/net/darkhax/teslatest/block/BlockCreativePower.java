@@ -13,8 +13,8 @@ public class BlockCreativePower extends BlockContainer {
     
     public BlockCreativePower() {
         
-        super(Material.ROCK);
-        this.setCreativeTab(CreativeTabs.REDSTONE);
+        super(Material.rock);
+        this.setCreativeTab(CreativeTabs.tabRedstone);
         this.setUnlocalizedName("teslatest.power");
     }
     

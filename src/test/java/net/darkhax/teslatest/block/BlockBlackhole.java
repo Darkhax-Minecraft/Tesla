@@ -13,8 +13,8 @@ public class BlockBlackhole extends BlockContainer {
     
     public BlockBlackhole() {
         
-        super(Material.ROCK);
-        this.setCreativeTab(CreativeTabs.REDSTONE);
+        super(Material.rock);
+        this.setCreativeTab(CreativeTabs.tabRedstone);
         this.setUnlocalizedName("teslatest.blackhole");
     }
     
