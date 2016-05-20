@@ -70,9 +70,9 @@ public class BaseTeslaContainer implements ITeslaConsumer, ITeslaProducer, ITesl
     
     /**
      * Constructor for creating an instance directly from a compound tag. This expects that the
-     * compound tag has some of the required data. @See {@link #readNBT(NBTTagCompound)} for
-     * precise info on what is expected. This constructor will only set the stored power if it
-     * has been written on the compound tag.
+     * compound tag has some of the required data. @See {@link #deserializeNBT(NBTTagCompound)}
+     * for precise info on what is expected. This constructor will only set the stored power if
+     * it has been written on the compound tag.
      * 
      * @param dataTag The NBTCompoundTag to read the important data from.
      */
