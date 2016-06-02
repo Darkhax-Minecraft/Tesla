@@ -9,7 +9,7 @@ repositories {
 
     maven {
       
-        url 'http://maven.rubbix.net'
+        url 'http://maven.epoxide.xyz'
     }
 }
 
@@ -23,8 +23,8 @@ Alternatively, if you are using [Maven](https://maven.apache.org/download.cgi) t
 ```
 <repositories>
     <repository>
-        <id>Rubbix.net</id>
-        <url>http://maven.rubbix.net</url>
+        <id>epoxide.xyz</id>
+        <url>http://maven.epoxide.xyz</url>
     </repository>
 </repositories>
 
