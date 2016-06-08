@@ -2,6 +2,8 @@ package net.darkhax.teslatest.tileentity;
 
 import net.darkhax.tesla.api.BaseTeslaContainer;
 import net.darkhax.tesla.capability.TeslaCapabilities;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -28,7 +30,6 @@ public class TileEntityAnalyzer extends TileEntity {
     
     @Override
     public void readFromNBT (NBTTagCompound compound) {
-        
         super.readFromNBT(compound);
         
         // It is important for the power being stored to be persistent. The BaseTeslaContainer

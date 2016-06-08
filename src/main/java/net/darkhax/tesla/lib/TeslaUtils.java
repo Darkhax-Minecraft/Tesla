@@ -1,6 +1,6 @@
 package net.darkhax.tesla.lib;
 
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.client.resources.I18n;
 
 public class TeslaUtils {
     
@@ -88,6 +88,6 @@ public class TeslaUtils {
      */
     public static String getLocalizedUnitType (long tesla) {
         
-        return I18n.translateToLocal("unit.tesla." + getUnitType(tesla));
+        return I18n.format("unit.tesla." + getUnitType(tesla));
     }
 }
