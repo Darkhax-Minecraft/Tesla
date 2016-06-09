@@ -31,7 +31,6 @@ public class TileEntityAnalyzer extends TileEntity {
     @Override
     public void readFromNBT (NBTTagCompound compound) {
         super.readFromNBT(compound);
-        
         // It is important for the power being stored to be persistent. The BaseTeslaContainer
         // includes a method to make reading one from a compound tag very easy. This method is
         // completely optional though, you can handle saving however you prefer. You could even
