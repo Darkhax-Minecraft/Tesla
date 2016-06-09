@@ -51,18 +51,17 @@ public class ItemBattery extends Item {
             return super.getMaxDamage(stack);
     }
 
-    /*
-     * Sets item tooltip saying how much energy is stored and capacity
-     */
+	//Sets the tooltip to the label set in the language file.
     @Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+		BaseTeslaContainer container = stack.getCapability(TeslaCapabilities.CAPABILITY_HOLDER,EnumFacing.DOWN);
         super.addInformation(stack, playerIn, tooltip, advanced);
 		 //Finds the label in the language file.
         tooltip.add(I18n.format("label.teslatest.battery.normal",
 		//Sets the first %d param in the lang file to the stored power.
-		stack.getCapability(TeslaCapabilities.CAPABILITY_HOLDER,EnumFacing.DOWN).getStoredPower(),
+		container.getStoredPower(),
 		//Sets the second %d param in the lang file to the capacity.
-		stack.getCapability(TeslaCapabilities.CAPABILITY_HOLDER,EnumFacing.DOWN).getCapacity()
+		container.getCapacity()
 		));
     }
 
