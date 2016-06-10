@@ -2,3 +2,9 @@
 tile.teslatest.analyzer.name=Tesla Analyzer
 tile.teslatest.power.name=Creative Power Cell
 tile.teslatest.blackhole.name=Power Blackhole
+#Item
+item.teslatest.battery.name=Battery
+item.teslatest.battery_creative.name=Infinite Battery
+#Label
+label.teslatest.battery.creative=§7Produces Infinite Tesla
+label.teslatest.battery.normal=§7Contains §e%dT§8/§e%dT§7.

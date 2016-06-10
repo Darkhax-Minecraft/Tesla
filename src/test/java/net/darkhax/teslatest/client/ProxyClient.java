@@ -14,5 +14,8 @@ public class ProxyClient extends ProxyCommon {
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(TeslaTest.analyzer), 0, new ModelResourceLocation(TeslaTest.analyzer.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(TeslaTest.blackhole), 0, new ModelResourceLocation(TeslaTest.blackhole.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(TeslaTest.creative), 0, new ModelResourceLocation(TeslaTest.creative.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(TeslaTest.battery, 0, new ModelResourceLocation(TeslaTest.battery.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(TeslaTest.battery_creative, 0, new ModelResourceLocation(TeslaTest.battery_creative.getRegistryName(), "inventory"));
+
     }
 }
