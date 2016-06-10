@@ -1,5 +1,8 @@
-package net.darkhax.tesla.api;
+package net.darkhax.tesla.api.implementation;
 
+import net.darkhax.tesla.api.ITeslaConsumer;
+import net.darkhax.tesla.api.ITeslaHolder;
+import net.darkhax.tesla.api.ITeslaProducer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.INBTSerializable;
 
@@ -7,10 +10,7 @@ import net.minecraftforge.common.util.INBTSerializable;
  * A basic Tesla container that serves as a consumer, producer and holder. Custom
  * implementations do not need to use all three. The INBTSerializable interface is also
  * optional.
- * 
- * @deprecated Moved to net.darkhax.tesla.api.implementation
  */
-@Deprecated
 public class BaseTeslaContainer implements ITeslaConsumer, ITeslaProducer, ITeslaHolder, INBTSerializable<NBTTagCompound> {
     
     /**

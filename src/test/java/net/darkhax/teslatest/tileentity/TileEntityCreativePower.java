@@ -1,6 +1,6 @@
 package net.darkhax.teslatest.tileentity;
 
-import net.darkhax.tesla.api.InfiniteTeslaProducer;
+import net.darkhax.tesla.api.implementation.InfiniteTeslaProducer;
 import net.darkhax.tesla.capability.TeslaCapabilities;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;

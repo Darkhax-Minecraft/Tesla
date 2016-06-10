@@ -1,11 +1,10 @@
-package net.darkhax.tesla.api;
+package net.darkhax.tesla.api.implementation;
+
+import net.darkhax.tesla.api.ITeslaConsumer;
 
 /**
  * Logic for a Tesla Consumer that will consume infinite amounts of power.
- * 
- * @deprecated Moved to net.darkhax.tesla.api.implementation
  */
-@Deprecated
 public class InfiniteTeslaConsumer implements ITeslaConsumer {
     
     @Override

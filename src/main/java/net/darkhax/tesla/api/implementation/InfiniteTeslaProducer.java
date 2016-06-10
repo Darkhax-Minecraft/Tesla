@@ -1,11 +1,10 @@
-package net.darkhax.tesla.api;
+package net.darkhax.tesla.api.implementation;
+
+import net.darkhax.tesla.api.ITeslaProducer;
 
 /**
  * Logic for a Tesla Producer that will produce an infinite amount of energy.
- * 
- * @deprecated Moved to net.darkhax.tesla.api.implementation
  */
-@Deprecated
 public class InfiniteTeslaProducer implements ITeslaProducer {
     
     @Override
