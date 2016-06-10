@@ -2,11 +2,11 @@ package net.darkhax.teslatest.block;
 
 import net.darkhax.tesla.api.ITeslaHolder;
 import net.darkhax.tesla.capability.TeslaCapabilities;
+import net.darkhax.teslatest.TeslaTest;
 import net.darkhax.teslatest.tileentity.TileEntityAnalyzer;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -22,7 +22,7 @@ public class BlockAnalyzer extends BlockContainer {
     public BlockAnalyzer() {
         
         super(Material.ROCK);
-        this.setCreativeTab(CreativeTabs.REDSTONE);
+        this.setCreativeTab(TeslaTest.tab);
         this.setUnlocalizedName("teslatest.analyzer");
     }
     
