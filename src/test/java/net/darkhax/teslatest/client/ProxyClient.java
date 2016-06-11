@@ -12,10 +12,11 @@ public class ProxyClient extends ProxyCommon {
     public void preInit () {
         
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(TeslaTest.analyzer), 0, new ModelResourceLocation(TeslaTest.analyzer.getRegistryName(), "inventory"));
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(TeslaTest.blackhole), 0, new ModelResourceLocation(TeslaTest.blackhole.getRegistryName(), "inventory"));
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(TeslaTest.creative), 0, new ModelResourceLocation(TeslaTest.creative.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(TeslaTest.blackholeCell), 0, new ModelResourceLocation(TeslaTest.blackholeCell.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(TeslaTest.creativeCell), 0, new ModelResourceLocation(TeslaTest.creativeCell.getRegistryName(), "inventory"));
+        
         ModelLoader.setCustomModelResourceLocation(TeslaTest.battery, 0, new ModelResourceLocation(TeslaTest.battery.getRegistryName(), "inventory"));
-        ModelLoader.setCustomModelResourceLocation(TeslaTest.battery_creative, 0, new ModelResourceLocation(TeslaTest.battery_creative.getRegistryName(), "inventory"));
-
+        ModelLoader.setCustomModelResourceLocation(TeslaTest.batteryBlackhole, 0, new ModelResourceLocation(TeslaTest.batteryBlackhole.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(TeslaTest.batteryCreative, 0, new ModelResourceLocation(TeslaTest.batteryCreative.getRegistryName(), "inventory"));
     }
 }

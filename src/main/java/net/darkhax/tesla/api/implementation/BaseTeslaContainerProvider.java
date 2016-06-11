@@ -15,7 +15,7 @@ public class BaseTeslaContainerProvider implements INBTSerializable<NBTTagCompou
     /**
      * The capability being provided.
      */
-    private BaseTeslaContainer container;
+    private final BaseTeslaContainer container;
     
     /**
      * Constructor for setting the BaseTeslaContainer for the provider to provide.

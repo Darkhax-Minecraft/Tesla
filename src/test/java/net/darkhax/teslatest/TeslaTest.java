@@ -6,7 +6,8 @@ import net.darkhax.teslatest.block.BlockCreativePower;
 import net.darkhax.teslatest.common.ProxyCommon;
 import net.darkhax.teslatest.creativetab.CreativeTabTesla;
 import net.darkhax.teslatest.item.ItemBattery;
-import net.darkhax.teslatest.item.ItemCreativeBattery;
+import net.darkhax.teslatest.item.ItemBatteryBlackhole;
+import net.darkhax.teslatest.item.ItemBatteryCreative;
 import net.darkhax.teslatest.tileentity.TileEntityAnalyzer;
 import net.darkhax.teslatest.tileentity.TileEntityBlackhole;
 import net.darkhax.teslatest.tileentity.TileEntityCreativePower;
@@ -33,11 +34,12 @@ public class TeslaTest {
     public static CreativeTabs tab;
     
     public static Block analyzer;
-    public static Block blackhole;
-    public static Block creative;
+    public static Block blackholeCell;
+    public static Block creativeCell;
     
     public static Item battery;
-    public static Item battery_creative;
+    public static Item batteryBlackhole;
+    public static Item batteryCreative;
     
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
@@ -45,11 +47,12 @@ public class TeslaTest {
         tab = new CreativeTabTesla();
         
         analyzer = registerBlock(new BlockAnalyzer(), TileEntityAnalyzer.class, "analyzer");
-        blackhole = registerBlock(new BlockBlackhole(), TileEntityBlackhole.class, "blackhole");
-        creative = registerBlock(new BlockCreativePower(), TileEntityCreativePower.class, "creative_power");
+        blackholeCell = registerBlock(new BlockBlackhole(), TileEntityBlackhole.class, "blackhole");
+        creativeCell = registerBlock(new BlockCreativePower(), TileEntityCreativePower.class, "creative_power");
         
         battery = registerItem(new ItemBattery(), "battery");
-        battery_creative = registerItem(new ItemCreativeBattery(), "battery_creative");
+        batteryBlackhole = registerItem(new ItemBatteryBlackhole(), "battery_blackhole");
+        batteryCreative = registerItem(new ItemBatteryCreative(), "battery_creative");
         
         proxy.preInit();
     }

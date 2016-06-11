@@ -14,6 +14,6 @@ public class CreativeTabTesla extends CreativeTabs {
     @Override
     public Item getTabIconItem () {
         
-        return Item.getItemFromBlock(TeslaTest.creative);
+        return Item.getItemFromBlock(TeslaTest.creativeCell);
     }
 }

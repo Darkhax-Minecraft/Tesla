@@ -20,6 +20,6 @@ public class InfiniteTeslaProducerProvider implements ICapabilityProvider {
     @SuppressWarnings("unchecked")
     public <T> T getCapability (Capability<T> capability, EnumFacing facing) {
         
-        return (capability == TeslaCapabilities.CAPABILITY_PRODUCER) ? (T) new InfiniteTeslaConsumer() : null;
+        return capability == TeslaCapabilities.CAPABILITY_PRODUCER ? (T) new InfiniteTeslaConsumer() : null;
     }
 }
