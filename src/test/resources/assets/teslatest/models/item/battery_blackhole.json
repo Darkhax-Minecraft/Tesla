@@ -2,6 +2,6 @@
   "parent": "item/handheld",
   "textures": {
   
-    "layer0": "teslatest:items/battery"
+    "layer0": "teslatest:items/battery_blackhole"
   }
 }

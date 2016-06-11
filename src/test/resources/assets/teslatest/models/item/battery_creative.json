@@ -1,6 +1,7 @@
 {
-  "parent": "item/generated",
+  "parent": "item/handheld",
   "textures": {
+  
     "layer0": "teslatest:items/battery_creative"
   }
 }
