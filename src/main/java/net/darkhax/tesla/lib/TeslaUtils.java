@@ -1,6 +1,17 @@
 package net.darkhax.tesla.lib;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import net.darkhax.tesla.api.ITeslaConsumer;
+import net.darkhax.tesla.api.ITeslaProducer;
+import net.darkhax.tesla.capability.TeslaCapabilities;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.Capability;
 
 public class TeslaUtils {
     
@@ -89,5 +100,67 @@ public class TeslaUtils {
     public static String getLocalizedUnitType (long tesla) {
         
         return I18n.format("unit.tesla." + getUnitType(tesla));
+    }
+    
+    /**
+     * Gets a list of all capabilities that touch a BlockPos. This will search for tile
+     * entities touching the BlockPos and then query them for access to their capabilities.
+     * 
+     * @param capability The capability you want to retrieve.
+     * @param world The world that this is happening in.
+     * @param pos The position to search around.
+     * @return A list of all capabilities that are being held by connected blocks.
+     */
+    public static <T> List<T> getConnectedCapabilities (Capability<T> capability, World world, BlockPos pos) {
+        
+        final List<T> capabilities = new ArrayList<T>();
+        
+        for (final EnumFacing side : EnumFacing.values()) {
+            
+            final TileEntity tile = world.getTileEntity(pos.offset(side));
+            
+            if (tile != null && !tile.isInvalid() && tile.hasCapability(capability, side.getOpposite()))
+                capabilities.add(tile.getCapability(capability, side.getOpposite()));
+        }
+        
+        return capabilities;
+    }
+    
+    /**
+     * Attempts to give power to all consumers touching the given BlockPos.
+     * 
+     * @param world The world that this is happening in.
+     * @param pos The position to search around.
+     * @param amount The amount of power to offer to each individual face.
+     * @param simulated Whether or not this is being ran as part of a simulation.
+     * @return The amount of power that was consumed.
+     */
+    public static long distributePowerToAllFaces (World world, BlockPos pos, long amount, boolean simulated) {
+        
+        long consumedPower = 0L;
+        
+        for (final ITeslaConsumer consumer : getConnectedCapabilities(TeslaCapabilities.CAPABILITY_CONSUMER, world, pos))
+            consumedPower += consumer.givePower(amount, simulated);
+            
+        return consumedPower;
+    }
+    
+    /**
+     * Attempts to consume power from all producers touching the given BlockPos.
+     * 
+     * @param world The world that this is happening in.
+     * @param pos The position to search around.
+     * @param amount The amount of power to request from each individual face.
+     * @param simulated Whether or not this is being ran as part of a simulation.
+     * @return The amount of power that was successfully consumed.
+     */
+    public static long consumePowerFromAllFaces (World world, BlockPos pos, long amount, boolean simulated) {
+        
+        long recievedPower = 0L;
+        
+        for (final ITeslaProducer producer : getConnectedCapabilities(TeslaCapabilities.CAPABILITY_PRODUCER, world, pos))
+            recievedPower += producer.takePower(amount, simulated);
+            
+        return recievedPower;
     }
 }
