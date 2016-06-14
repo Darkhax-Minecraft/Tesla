@@ -61,13 +61,4 @@ public class TeslaCapabilities {
         
         }
     }
-    
-    public static class BaseTeslaConsumer implements ITeslaConsumer {
-        
-        @Override
-        public long givePower (long power, boolean simulated) {
-            
-            return power;
-        }
-    }
 }

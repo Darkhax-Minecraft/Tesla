@@ -1,9 +1,9 @@
 package net.darkhax.tesla;
 
-import net.darkhax.tesla.api.BaseTeslaContainer;
 import net.darkhax.tesla.api.ITeslaConsumer;
 import net.darkhax.tesla.api.ITeslaHolder;
 import net.darkhax.tesla.api.ITeslaProducer;
+import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
 import net.darkhax.tesla.capability.TeslaCapabilities.CapabilityTeslaConsumer;
 import net.darkhax.tesla.capability.TeslaCapabilities.CapabilityTeslaHolder;
 import net.darkhax.tesla.capability.TeslaCapabilities.CapabilityTeslaProducer;
