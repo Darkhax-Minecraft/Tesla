@@ -3,10 +3,12 @@ package net.darkhax.teslatest.block;
 import net.darkhax.tesla.api.ITeslaHolder;
 import net.darkhax.tesla.capability.TeslaCapabilities;
 import net.darkhax.teslatest.TeslaTest;
+import net.darkhax.teslatest.TextUtils;
 import net.darkhax.teslatest.tileentity.TileEntityAnalyzer;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -18,6 +20,11 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
 public class BlockAnalyzer extends BlockContainer {
+    
+    /**
+     * Message ID used by all messages from the analyzer. Allows for spamless messages.
+     */
+    private final int MESSAGE_ID = 14940026;
     
     public BlockAnalyzer() {
         
@@ -36,7 +43,7 @@ public class BlockAnalyzer extends BlockContainer {
             if (tile.hasCapability(TeslaCapabilities.CAPABILITY_HOLDER, side)) {
                 
                 final ITeslaHolder holder = tile.getCapability(TeslaCapabilities.CAPABILITY_HOLDER, side);
-                playerIn.addChatMessage(new TextComponentString("I have " + holder.getStoredPower() + " / " + holder.getCapacity() + " power."));
+                TextUtils.sendSpamlessMessage(this.MESSAGE_ID, new TextComponentString(I18n.format("tooltip.teslatest.battery.normal", holder.getStoredPower(), holder.getCapacity())));
             }
         }
         

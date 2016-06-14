@@ -1,4 +1,4 @@
-#Tile
+﻿#Tile
 tile.teslatest.analyzer.name=Tesla Analyzer
 tile.teslatest.blackhole.name=Power Blackhole
 tile.teslatest.power.name=Creative Power Cell
@@ -9,9 +9,9 @@ item.teslatest.battery.blackhole.name=Blackhole Battery
 item.teslatest.battery.creative.name=CreativeBattery
 
 #Tooltips
-tooltip.teslatest.battery.normal=§7Contains §e%dT§8/§e%dT§7.
-tooltip.teslatest.battery.blackhole=§7Consumes an infinite amount of Tesla.
-tooltip.teslatest.battery.creative=§7Produces an infinite amount of Tesla.
+tooltip.teslatest.battery.normal=Contains §e%dT/§e%dT
+tooltip.teslatest.battery.blackhole=Consumes an infinite amount of Tesla
+tooltip.teslatest.battery.creative=Produces an infinite amount of Tesla
 
 #Creative
 itemGroup.tesla=Tesla
