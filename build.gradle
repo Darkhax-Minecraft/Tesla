@@ -41,11 +41,24 @@ minecraft {
 
 //Defines basic patterns for pulling various dependencies.
 repositories {
+    
+    //The One Probe
+    maven {
+        
+        url "http://maven.tterrag.com/"
+    }
+    
+    //Waila
+    maven {
 
+        url "http://mobiusstrip.eu/maven"
+    }
 }
 
 dependencies {
-
+    
+    deobfCompile "mcjty.theoneprobe:TheOneProbe:1.9.4-1.0.6-17"
+    deobfCompile "mcp.mobius.waila:Waila:1.7.0-B3_1.9.4"
 }
 
 //Handles basic resources such as mcmod.info
@@ -123,12 +136,20 @@ task deobfJar(type: Jar) {
     classifier = "deobf"
 }
 
+//Creates the deobf test jar.
+task testJar(type: Jar) {
+    
+    classifier = 'test-deobf'
+    from sourceSets.test.output
+}
+
 //Adds the deobf, source and javadoc jars to the build artifacts.
 artifacts {
 
     archives deobfJar
     archives sourcesJar
     archives javadocJar
+    archives deobfTestJar
 }
 
 //Uploads the artifacts to the maven server.
@@ -141,12 +162,6 @@ uploadArchives {
             repository(url: "file:///var/www/html/maven")
         }
     }
-}
-
-task setCurseForgeInfo() {
-
-    project.ext.releaseType = "alpha";
-    project.ext.changelog = "All changes can be found here: https://github.com/Darkhax-Minecraft/TESLA/commits/master";
 }
 
 //Prevents incomplete JavaDocs from preventing a build on Java 8.
@@ -166,14 +181,13 @@ curseforge {
 
     //Sets the API from the system environment, if available.
     apiKey = System.getenv("curseForgeApiKey") ? System.getenv("curseForgeApiKey") : "0";
-
+    
     project {
 
         //Sets the Project ID from the system environment, if available.
         id = System.getenv("projectId") ? System.getenv("projectId") : "0";
-
-        releaseType = project.releaseType;
-        changelog = project.changelog;
+        releaseType = "alpha";
+        changelog = "All changes can be found here: https://github.com/Darkhax-Minecraft/TESLA/commits/master";
 
         addGameVersion "1.9.4"
         
