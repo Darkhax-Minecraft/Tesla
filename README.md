@@ -3,7 +3,7 @@ TESLA
 Tesla is a power API for minecraft that can be used by various mods to interact with eachother over power networks.
 
 ##Dependency Management
-If you are using [Gradle](https://gradle.org) to manage your dependencies, add the following into your `build.gradle` file. Make sure to replace the version with the correct one. All versions can be viewed [here](http://maven.rubbix.net/net/darkhax/tesla/Tesla/).
+If you are using [Gradle](https://gradle.org) to manage your dependencies, add the following into your `build.gradle` file. Make sure to replace the version with the correct one. All versions can be viewed [here](http://maven.epoxide.xyz/net/darkhax/tesla/Tesla/).
 ```
 repositories {
 
@@ -19,7 +19,7 @@ dependencies {
 }
 ```
 
-Alternatively, if you are using [Maven](https://maven.apache.org/download.cgi) to manage your dependencies. Add the following into your `pom.xml` file. Make sure to replace the version with the correct one. Again, all versions can be found [here](http://maven.rubbix.net/net/darkhax/tesla/Tesla/).
+Alternatively, if you are using [Maven](https://maven.apache.org/download.cgi) to manage your dependencies. Add the following into your `pom.xml` file. Make sure to replace the version with the correct one. Again, all versions can be found [here](http://maven.epoxide.xyz/net/darkhax/tesla/Tesla/).
 ```
 <repositories>
     <repository>
