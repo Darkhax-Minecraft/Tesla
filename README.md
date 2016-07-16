@@ -38,7 +38,7 @@ Alternatively, if you are using [Maven](https://maven.apache.org/download.cgi) t
 Frequently Asked Questions
 ==========================
 **Where can people go to discuss the Tesla API?**   
-Current discussions are taking place over IRC chat. You can join us in [#Tesla-API on Esper.net](http://webchat.esper.net/?nick=&channels=tesla-api). A public Discord server and/or Curse server may also be openend up in the future. 
+We have a discord server to discuss the API [here](https://discord.gg/nN68J34).
 
 **What makes Tesla different from other power APIs?**   
 The Tesla API functions similarly to other well known power API, however there are several design choices that sets the Tesla API apart from the rest. One of these differences is the support for Forge's capability system. By using the capability system, mod authors can easily hook their blocks, items and mobs into the Tesla power system. The capability system also allows mod authors to hook vanilla content, or content from other mods into the Tesla power API as well. There are also several changes on the back end which allows the Tesla API to handle much larger units of power. Traditional power API only support 2.1 billion, while Tesla can support 9.2 quintillion. 
