@@ -93,7 +93,7 @@ public class BaseTeslaContainer implements ITeslaConsumer, ITeslaProducer, ITesl
     @Override
     public long givePower (long Tesla, boolean simulated) {
         
-        final long acceptedTesla = Math.min(this.capacity - this.stored, Math.min(this.getInputRate(), Tesla));
+        final long acceptedTesla = Math.min(this.getCapacity() - this.stored, Math.min(this.getInputRate(), Tesla));
         
         if (!simulated)
             this.stored += acceptedTesla;
@@ -144,8 +144,8 @@ public class BaseTeslaContainer implements ITeslaConsumer, ITeslaProducer, ITesl
         if (nbt.hasKey("TeslaOutput"))
             this.outputRate = nbt.getLong("TeslaOutput");
             
-        if (this.stored > this.capacity)
-            this.stored = this.capacity;
+        if (this.stored > this.getCapacity())
+            this.stored = this.getCapacity();
     }
     
     /**
