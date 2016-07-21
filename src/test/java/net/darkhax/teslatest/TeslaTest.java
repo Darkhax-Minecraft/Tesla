@@ -28,7 +28,7 @@ public class TeslaTest {
     @SidedProxy(serverSide = "net.darkhax.teslatest.common.ProxyCommon", clientSide = "net.darkhax.teslatest.client.ProxyClient")
     public static ProxyCommon proxy;
     
-    @Mod.Instance("Tesla|Test")
+    @Mod.Instance("teslatest")
     public static TeslaTest instance;
     
     public static CreativeTabs tab;
