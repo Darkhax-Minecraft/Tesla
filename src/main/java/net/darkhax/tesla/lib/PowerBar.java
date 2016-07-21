@@ -1,71 +1,103 @@
 package net.darkhax.tesla.lib;
 
 import net.darkhax.tesla.api.ITeslaHolder;
-import net.darkhax.tesla.capability.TeslaCapabilities;
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class PowerBar {
-    private final BackgroundType background;
-    private final int x, y;
-    private final GuiContainer container;
-    private final ResourceLocation resourceLocation = new ResourceLocation("tesla", "textures/gui/sheet.png");
     
     /**
-     * Draws a power bar with the amount of tesla in your machine
-     *
-     * @param container The Gui of the machine
-     * @param x The x position of the power bar
-     * @param y The y position of the power bar
-     * @param bg If the function should draw a background or not
+     * Constant reference to the included gui element sheet.
      */
-    public PowerBar(GuiContainer container, int x, int y, BackgroundType bg) {
-        this.background = bg;
-        this.container = container;
+    private static final ResourceLocation TEXTURE_SHEET = new ResourceLocation("tesla", "textures/gui/elements.png");
+    
+    /**
+     * The x position of the power bar on the screen.
+     */
+    private final int x;
+    
+    /**
+     * The y position of the power bar on the screen.
+     */
+    private final int y;
+    
+    /**
+     * The screen to draw the power bar on.
+     */
+    private final GuiScreen screen;
+    
+    /**
+     * The type of background the use when drawing the power bar.
+     */
+    private final BackgroundType background;
+    
+    /**
+     * Object that can be used to draw a power bar on the screen.
+     *
+     * @param screen The screen to draw the power bar on.
+     * @param x The x position of the power bar on the screen.
+     * @param y The y position of the power bar on the screen.
+     * @param type The background type to use for the power bar.
+     */
+    public PowerBar(GuiScreen screen, int x, int y, BackgroundType type) {
+        
+        this.background = type;
+        this.screen = screen;
         this.x = x;
         this.y = y;
     }
     
     /**
-     * Draws a power bar with the amount of tesla in your machine
-     *
-     * @param t TileEntity that has the Holder capability
+     * Draws a power bar that represents the power held within an ITeslaHolder.
+     * 
+     * @param holder The holder to represent.
      */
-    public void draw (TileEntity t) {
+    public void draw (ITeslaHolder holder) {
         
-        ITeslaHolder h = t.getCapability(TeslaCapabilities.CAPABILITY_HOLDER, null);
-        if (h != null)
-            draw(h.getStoredPower(), h.getCapacity());
+        draw(holder.getStoredPower(), holder.getCapacity());
     }
     
     /**
-     * Draws a power bar with the amount of tesla in your machine
-     *
-     * @param a Amount of tesla stored in your machine
-     * @param c Capacity of tesla storable in your machine
+     * Draws a power bard that represents the based power information.
+     * 
+     * @param power The amount of power to represent.
+     * @param capacity The capacity to represent.
      */
-    public void draw (long a, long c) {
+    public void draw (long power, long capacity) {
         
-        container.mc.getTextureManager().bindTexture(resourceLocation);
-        if (background != BackgroundType.CLEAR) {
-            switch (background) {
-                case LIGHT:
-                    container.drawTexturedModalRect(x, y, 3, 1, 14, 50);
-                    break;
-                case DARK:
-                    container.drawTexturedModalRect(x, y, 3, 53, 14, 50);
-                    break;
-            }
-        }
-        long j = (a * 51) / c;
-        container.drawTexturedModalRect(x + 1, (int) (y + 50 - j), 18, (int) (51 - j), 14, (int) (j + 2));
+        screen.mc.getTextureManager().bindTexture(TEXTURE_SHEET);
+        
+        if (this.background == BackgroundType.LIGHT)
+            screen.drawTexturedModalRect(x, y, 3, 1, 14, 50);
+            
+        else if (this.background == BackgroundType.DARK)
+            screen.drawTexturedModalRect(x, y, 3, 53, 14, 50);
+            
+        long powerOffset = (power * 51) / capacity;
+        screen.drawTexturedModalRect(x + 1, (int) (y + 50 - powerOffset), 18, (int) (51 - powerOffset), 14, (int) (powerOffset + 2));
     }
     
+    /**
+     * Describes a background image to be rendered for a power bar.
+     */
     public enum BackgroundType {
-        CLEAR,
+        
+        /**
+         * No background texture.
+         */
+        NONE,
+        
+        /**
+         * The lighter background texture.
+         */
         LIGHT,
+        
+        /**
+         * The darker background texture.
+         */
         DARK,
     }
-    
 }
