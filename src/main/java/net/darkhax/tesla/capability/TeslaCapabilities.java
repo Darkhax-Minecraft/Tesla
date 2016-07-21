@@ -14,6 +14,9 @@ public class TeslaCapabilities {
     @CapabilityInject(ITeslaConsumer.class)
     public static Capability<ITeslaConsumer> CAPABILITY_CONSUMER = null;
     
+    @CapabilityInject(ITeslaConsumer.class)
+    public static Capability TESLA_CONSUMER = null;
+    
     @CapabilityInject(ITeslaProducer.class)
     public static Capability<ITeslaProducer> CAPABILITY_PRODUCER = null;
     
