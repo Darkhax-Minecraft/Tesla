@@ -58,9 +58,10 @@ Forge provides several tools which make soft dependency really simple. The first
 Standards
 =========
 For a cross mod API to work, it is important that several standards are followed. These standards ensure that everything works well together and no two mods step on each others toes. While these standards are in no way enforced, it makes things better for everyone involved. 
-- 1 Tesla should be equal to 1 RF. This is so mods will not need to rebalance if they want to use both power systems, or if they are migrating from RF to Tesla or the other way around. An example of this being important, a piece of coal should generate exactly the same amount of both power units. An example of this not being important, having an RF to Tesla or Tesla to RF conversion block having a percentage of power that is lost/used in the conversion process.
-- The TileEntity should not directly implement the interfaces from Tesla. Those interfaces are intended to be used by Capability objects and not the TileEntity itself. All compatability is handled through the capability system, so mods which try to avoid capabilities by using the interfaces will not work. 
+- One Tesla should be equal to 1 RF. This is help existing RF mods convert over without rebalancing, and to allow mods to support multiple systems seemlessly. This is only applies to basic balancing. If someone wants to make a power conversion mod they can play around with the conversion efficiency ratio. 
+- Only capability objects should use the capability interfaces. If you implement the interface to your TileEntity/Entity/Item it will not be compatible with other tesla content.
 - All sided logic should be handled through the hasCapabilit and getCapability methods provided by forge. If something requests a power input on the top of your block, but you only allow power from the back of your block, do not give access to the power input, the thing requesting the input slot is not expected to know if it is acceptable or not.
+- Power sources are responsible for pushing power to nearby machines. Machines and wires should NOT pull power from other sources. 
 
 Getting Started
 ===============
