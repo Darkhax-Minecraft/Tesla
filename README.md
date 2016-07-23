@@ -58,7 +58,7 @@ Forge provides several tools which make soft dependency really simple. The first
 Standards
 =========
 For a cross mod API to work, it is important that several standards are followed. These standards ensure that everything works well together and no two mods step on each others toes. While these standards are in no way enforced, it makes things better for everyone involved. 
-- One Tesla should be equal to 1 RF. This is help existing RF mods convert over without rebalancing, and to allow mods to support multiple systems seemlessly. This is only applies to basic balancing. If someone wants to make a power conversion mod they can play around with the conversion efficiency ratio. 
+- One Tesla should be equal to 1 RF. This is to help existing RF mods convert over without rebalancing, and to allow mods to support multiple systems seemlessly. This is only applies to basic balancing. If someone wants to make a power conversion mod they can play around with the conversion efficiency ratio. 
 - Only capability objects should use the capability interfaces. If you implement the interface to your TileEntity/Entity/Item it will not be compatible with other tesla content.
 - All sided logic should be handled through the hasCapabilit and getCapability methods provided by forge. If something requests a power input on the top of your block, but you only allow power from the back of your block, do not give access to the power input, the thing requesting the input slot is not expected to know if it is acceptable or not.
 - Power sources are responsible for pushing power to nearby machines. Machines and wires should NOT pull power from other sources. 
