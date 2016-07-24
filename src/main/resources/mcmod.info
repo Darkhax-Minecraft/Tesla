@@ -1,7 +1,7 @@
 [{
 	"modid": "tesla",
 	"name": "TESLA",
-	"description": "TBA",
+	"description": "A modern power API",
 	"version": "${version}",
 	"mcversion": "${mcversion}",
 	"url": "",
