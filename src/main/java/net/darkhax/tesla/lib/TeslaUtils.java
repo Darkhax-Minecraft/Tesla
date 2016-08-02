@@ -43,9 +43,17 @@ public class TeslaUtils {
     public static final long TERATESLA = 1000000000000L;
     
     /**
-     * The amount of Tesla in a PentaTesla. One Quadrilli.on
+     * The amount of Tesla in a PentaTesla. One Quadrillion.
+     * 
+     * @deprecated This field has a typo. Please use {@link #PETATESLA} instead.
      */
+    @Deprecated
     public static final long PENTATESLA = 1000000000000000L;
+    
+    /**
+     * The amount of Tesla in a PentaTesla. One Quadrillion.
+     */
+    public static final long PETATESLA = 1000000000000000L;
     
     /**
      * The amount of Tesla in a ExaTesla. One Quintilian.
