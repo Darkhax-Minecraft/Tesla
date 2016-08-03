@@ -3,17 +3,26 @@ package net.darkhax.tesla.lib;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
+
 import net.darkhax.tesla.api.ITeslaConsumer;
 import net.darkhax.tesla.api.ITeslaHolder;
 import net.darkhax.tesla.api.ITeslaProducer;
+import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
 import net.darkhax.tesla.capability.TeslaCapabilities;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.client.settings.GameSettings;
+import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TeslaUtils {
     
@@ -306,5 +315,31 @@ public class TeslaUtils {
             recievedPower += producer.takePower(amount, simulated);
             
         return recievedPower;
+    }
+    
+    @SideOnly(Side.CLIENT)
+    public static void createTooltip (ItemStack stack, List<String> tooltip) {
+        
+        if (isTeslaHolder(stack, EnumFacing.DOWN)) {
+            
+            final ITeslaHolder holder = TeslaUtils.getTeslaHolder(stack, EnumFacing.DOWN);
+            
+            tooltip.add(ChatFormatting.DARK_AQUA + I18n.format("tooltip.tesla.powerinfo", Long.toString(holder.getStoredPower()), Long.toString(holder.getCapacity())));
+            
+            if (holder instanceof BaseTeslaContainer) {
+                
+                final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
+                
+                if (GameSettings.isKeyDown(keyBindSneak)) {
+                    
+                    final BaseTeslaContainer container = (BaseTeslaContainer) holder;                  
+                    tooltip.add(ChatFormatting.DARK_AQUA + I18n.format("tooltip.tesla.input", Long.toString(container.getInputRate())));
+                    tooltip.add(ChatFormatting.DARK_AQUA + I18n.format("tooltip.tesla.output", Long.toString(container.getOutputRate())));
+                }
+                
+                else
+                    tooltip.add(I18n.format("tooltip.tesla.showinfo", keyBindSneak.getDisplayName()));
+            }
+        }
     }
 }

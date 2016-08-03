@@ -8,3 +8,9 @@ unit.tesla.gt=GigaTesla
 unit.tesla.tt=TeraTesla
 unit.tesla.pt=PetaTesla
 unit.tesla.et=ExaTesla
+
+#Tooltips
+tooltip.tesla.showinfo=Press §d%s§7 for more info.
+tooltip.tesla.powerinfo=%s / %sT
+tooltip.tesla.output=Output: %sT/t
+tooltip.tesla.input=Input: %sT/t
