@@ -87,9 +87,9 @@ public class TextUtils {
      * @param lnLength: The ideal size for each line of text.
      * @param wrapLongWords: If true the ideal size will be exact, potentially splitting words
      *        on the end of each line.
-     * @param format: A list to add each line of text to. An good example of such list would be
+     * @param list: A list to add each line of text to. An good example of such list would be
      *        the list of tooltips on an item.
-     * @param color: An TextFormatting to apply to all lines added to the list.
+     * @param format: An TextFormatting to apply to all lines added to the list.
      * @return List: The same List instance provided however the string provided will be
      *         wrapped to the ideal line length and then added.
      */
