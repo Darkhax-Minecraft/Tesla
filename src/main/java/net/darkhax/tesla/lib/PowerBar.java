@@ -94,6 +94,7 @@ public class PowerBar {
      * @return The x position of the power bar on the screen.
      */
     public int getX() {
+
         return x;
     }
 
@@ -101,6 +102,7 @@ public class PowerBar {
      * @return The y position of the power bar on the screen.
      */
     public int getY() {
+
         return y;
     }
 
