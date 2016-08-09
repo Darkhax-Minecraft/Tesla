@@ -317,29 +317,73 @@ public class TeslaUtils {
         return recievedPower;
     }
     
+    /**
+     * Generates tooltip data for an ItemStack that has the ITeslaHolder interface.
+     * Additionally, if the holder is a BaseTeslaContainer, input/output rates will be shown.
+     * 
+     * @param stack The ItemStack to make the tooltip for.
+     * @param tooltip A list of strings which represent the lines of the tooltip.
+     */
     @SideOnly(Side.CLIENT)
     public static void createTooltip (ItemStack stack, List<String> tooltip) {
         
         if (isTeslaHolder(stack, EnumFacing.DOWN)) {
             
+            final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
             final ITeslaHolder holder = TeslaUtils.getTeslaHolder(stack, EnumFacing.DOWN);
             
-            tooltip.add(ChatFormatting.DARK_AQUA + I18n.format("tooltip.tesla.powerinfo", Long.toString(holder.getStoredPower()), Long.toString(holder.getCapacity())));
-            
-            if (holder instanceof BaseTeslaContainer) {
+            if (GameSettings.isKeyDown(keyBindSneak)) {
                 
-                final KeyBinding keyBindSneak = Minecraft.getMinecraft().gameSettings.keyBindSneak;
+                addHolderInfo(holder, tooltip);
                 
-                if (GameSettings.isKeyDown(keyBindSneak)) {
+                if (holder instanceof BaseTeslaContainer) {
                     
-                    final BaseTeslaContainer container = (BaseTeslaContainer) holder;                  
+                    final BaseTeslaContainer container = (BaseTeslaContainer) holder;
                     tooltip.add(ChatFormatting.DARK_AQUA + I18n.format("tooltip.tesla.input", Long.toString(container.getInputRate())));
                     tooltip.add(ChatFormatting.DARK_AQUA + I18n.format("tooltip.tesla.output", Long.toString(container.getOutputRate())));
                 }
-                
-                else
-                    tooltip.add(I18n.format("tooltip.tesla.showinfo", keyBindSneak.getDisplayName()));
             }
+            
+            else
+                tooltip.add(I18n.format("tooltip.tesla.showinfo", ChatFormatting.DARK_AQUA, keyBindSneak.getDisplayName(), ChatFormatting.GRAY));
         }
+    }
+    
+    /**
+     * Adds Tesla holder info to a tooltip.
+     * 
+     * @param stack The ItemStack to display info for.
+     * @param tooltip The tooltip to add the info to.
+     */
+    @SideOnly(Side.CLIENT)
+    public static void addHolderInfo (ItemStack stack, List<String> tooltip) {
+        
+        if (isTeslaHolder(stack, EnumFacing.DOWN))
+            addHolderInfo(getTeslaHolder(stack, EnumFacing.DOWN), tooltip);
+    }
+    
+    /**
+     * Adds Tesla holder info to a tooltip.
+     * 
+     * @param holder The ITeslaHolder to display info for.
+     * @param tooltip The tooltip to add the info to.
+     */
+    @SideOnly(Side.CLIENT)
+    public static void addHolderInfo (ITeslaHolder holder, List<String> tooltip) {
+        
+        addHolderInfo(holder.getStoredPower(), holder.getCapacity(), tooltip);
+    }
+    
+    /**
+     * Adds Tesla holder info to a tooltip.
+     * 
+     * @param stored The amount of stored power.
+     * @param capacity The max capacity.
+     * @param tooltip The tooltip to add the info to.
+     */
+    @SideOnly(Side.CLIENT)
+    public static void addHolderInfo (long stored, long capacity, List<String> tooltip) {
+        
+        tooltip.add(ChatFormatting.DARK_AQUA + I18n.format("tooltip.tesla.powerinfo", Long.toString(stored), Long.toString(capacity)));
     }
 }
