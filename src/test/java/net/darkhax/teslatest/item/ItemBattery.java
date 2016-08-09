@@ -4,14 +4,12 @@ import java.util.List;
 
 import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
 import net.darkhax.tesla.api.implementation.BaseTeslaContainerProvider;
-import net.darkhax.tesla.capability.TeslaCapabilities;
+import net.darkhax.tesla.lib.TeslaUtils;
 import net.darkhax.teslatest.TeslaTest;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
 /**
@@ -31,10 +29,7 @@ public class ItemBattery extends Item {
     @Override
     public void addInformation (ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
         
-        super.addInformation(stack, playerIn, tooltip, advanced);
-        final BaseTeslaContainer container = (BaseTeslaContainer) stack.getCapability(TeslaCapabilities.CAPABILITY_HOLDER, EnumFacing.DOWN);
-        
-        tooltip.add(I18n.format("tooltip.teslatest.battery.normal", container.getStoredPower(), container.getCapacity()));
+        TeslaUtils.createTooltip(stack, tooltip);
     }
     
     @Override
