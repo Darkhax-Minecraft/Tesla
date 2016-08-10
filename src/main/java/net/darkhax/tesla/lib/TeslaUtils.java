@@ -318,6 +318,50 @@ public class TeslaUtils {
     }
     
     /**
+     * Checks if a capability is for the Tesla holder.
+     * 
+     * @param capability The capability to check.
+     * @return Whether or not the capability is for the Tesla holder.
+     */
+    public static boolean isHolderCapability (Capability<?> capability) {
+        
+        return capability == TeslaCapabilities.CAPABILITY_HOLDER;
+    }
+    
+    /**
+     * Checks if a capability is for the Tesla consumer.
+     * 
+     * @param capability The capability to check.
+     * @return Whether or not the capability is for the Tesla consumer.
+     */
+    public static boolean isConsumerCapability (Capability<?> capability) {
+        
+        return capability == TeslaCapabilities.CAPABILITY_CONSUMER;
+    }
+    
+    /**
+     * Checks if a capability is for the Tesla producer.
+     * 
+     * @param capability The capability to check.
+     * @return Whether or not the capability is for the Tesla producer.
+     */
+    public static boolean isProducerCapability (Capability<?> capability) {
+        
+        return capability == TeslaCapabilities.CAPABILITY_PRODUCER;
+    }
+    
+    /**
+     * Checks if a capability is a Tesla capability
+     * 
+     * @param capability The capability to check.
+     * @return Whether or not the capability is a Tesla capability.
+     */
+    public static boolean isTeslaCapability (Capability<?> capability) {
+        
+        return isHolderCapability(capability) || isConsumerCapability(capability) || isProducerCapability(capability);
+    }
+    
+    /**
      * Generates tooltip data for an ItemStack that has the ITeslaHolder interface.
      * Additionally, if the holder is a BaseTeslaContainer, input/output rates will be shown.
      * 
