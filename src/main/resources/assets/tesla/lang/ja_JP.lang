@@ -1,0 +1,16 @@
+#テスラのための日本語訳
+
+#エネルギーの単位
+unit.tesla.t=テスラ
+unit.tesla.kt=キロテスラ
+unit.tesla.mt=メガテスラ
+unit.tesla.gt=ギガテスラ
+unit.tesla.tt=テラテスラ
+unit.tesla.pt=ペタテスラ
+unit.tesla.et=エクサテスラ
+
+#ツールチップ
+tooltip.tesla.showinfo=プレス %s%s%s 詳しくは。
+tooltip.tesla.powerinfo=%s/%s テスラ
+tooltip.tesla.output=出力: %s テスラ/t
+tooltip.tesla.input=入力: %s テスラ/t

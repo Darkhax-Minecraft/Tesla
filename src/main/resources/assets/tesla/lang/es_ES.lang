@@ -1,0 +1,16 @@
+#Traducciones al español para Tesla
+
+#Unidades de energía
+unit.tesla.t=Tesla
+unit.tesla.kt=KiloTesla
+unit.tesla.mt=MegaTesla
+unit.tesla.gt=GigaTesla
+unit.tesla.tt=TeraTesla
+unit.tesla.pt=PetaTesla
+unit.tesla.et=ExaTesla
+
+#Tooltips
+tooltip.tesla.showinfo=Información sobre herramientas %s%s%s para obtener más información.
+tooltip.tesla.powerinfo=%s/%s Tesla
+tooltip.tesla.output=Salida: %s Tesla/t
+tooltip.tesla.input=Entrada: %s Tesla/t

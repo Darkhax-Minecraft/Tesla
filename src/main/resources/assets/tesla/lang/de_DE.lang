@@ -1,0 +1,16 @@
+#Deutsche Übersetzungen für den Tesla Mod
+
+#Energieeinheiten
+unit.tesla.t=Tesla
+unit.tesla.kt=KiloTesla
+unit.tesla.mt=MegaTesla
+unit.tesla.gt=GigaTesla
+unit.tesla.tt=TeraTesla
+unit.tesla.pt=PetaTesla
+unit.tesla.et=ExaTesla
+
+#Tooltips
+tooltip.tesla.showinfo=Presse %s%s%s für weitere Informationen.
+tooltip.tesla.powerinfo=%s/%s Tesla
+tooltip.tesla.output=Ausgabe: %s Tesla/t
+tooltip.tesla.input=Eingang: %s Tesla/t

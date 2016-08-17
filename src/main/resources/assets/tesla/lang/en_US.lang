@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+#English translations for Tesla
+
+#Energy Units
+unit.tesla.t=Tesla
+unit.tesla.kt=KiloTesla
+unit.tesla.mt=MegaTesla
+unit.tesla.gt=GigaTesla
+unit.tesla.tt=TeraTesla
+unit.tesla.pt=PetaTesla
+unit.tesla.et=ExaTesla
+=======
 #English translations for Tesla
 
 #Energy Units
@@ -14,3 +26,4 @@ tooltip.tesla.showinfo=Press %s%s%s for more info.
 tooltip.tesla.powerinfo=%s/%s Tesla
 tooltip.tesla.output=Output: %s Tesla/t
 tooltip.tesla.input=Input: %s Tesla/t
+>>>>>>> ee31d4f9df44f387bfc33d87ca2795157b5d791a
