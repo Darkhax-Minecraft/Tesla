@@ -10,7 +10,7 @@ unit.tesla.pt=PetaTesla
 unit.tesla.et=ExaTesla
 
 #Tooltips
-tooltip.tesla.showinfo=Presse %s%s%s für weitere Informationen.
+tooltip.tesla.showinfo=Drücke %s%s%s für weitere Informationen.
 tooltip.tesla.powerinfo=%s/%s Tesla
-tooltip.tesla.output=Ausgabe: %s Tesla/t
-tooltip.tesla.input=Eingang: %s Tesla/t
+tooltip.tesla.output=Output: %s Tesla/t
+tooltip.tesla.input=Input: %s Tesla/t
