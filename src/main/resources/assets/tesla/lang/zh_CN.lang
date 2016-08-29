@@ -1,16 +1,16 @@
-#特斯拉的简化中国翻译
+#Simplified Chinese translations for Tesla
 
-#能量单位
+#Energy Units
 unit.tesla.t=特斯拉
 unit.tesla.kt=千特斯拉
 unit.tesla.mt=兆特斯拉
 unit.tesla.gt=吉特斯拉
 unit.tesla.tt=太特斯拉
-unit.tesla.pt=饿鬼特斯拉
+unit.tesla.pt=拍特斯拉
 unit.tesla.et=艾特斯拉
 
-#提示
-tooltip.tesla.showinfo=按 %s%s%s 更多的信息。
-tooltip.tesla.powerinfo=%s/%s 特斯拉
-tooltip.tesla.output=输出: %s 特斯拉/ŧ
-tooltip.tesla.input=输入: %s 特斯拉/ŧ
+#Tooltips
+tooltip.tesla.showinfo=按%s%s%s获得详细信息。
+#tooltip.tesla.powerinfo=%s/%s Tesla
+tooltip.tesla.output=输出：%s Tesla/ŧ
+tooltip.tesla.input=输入：%s Tesla/ŧ
