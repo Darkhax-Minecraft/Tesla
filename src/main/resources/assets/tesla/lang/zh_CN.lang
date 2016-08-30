@@ -8,3 +8,9 @@ unit.tesla.gt=吉特斯拉
 unit.tesla.tt=太特斯拉
 unit.tesla.pt=拍特斯拉
 unit.tesla.et=艾特斯拉
+
+#Tooltips
+tooltip.tesla.showinfo=按%s%s%s获得详细信息。
+#tooltip.tesla.powerinfo=%s/%s Tesla
+tooltip.tesla.output=输出：%s Tesla/ŧ
+tooltip.tesla.input=输入：%s Tesla/ŧ
