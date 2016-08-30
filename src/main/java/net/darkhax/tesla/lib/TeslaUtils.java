@@ -190,7 +190,7 @@ public class TeslaUtils {
      */
     public static ITeslaConsumer getTeslaConsumer (ICapabilityProvider provider, EnumFacing side) {
         
-        return (ITeslaConsumer) provider.getCapability(TeslaCapabilities.CAPABILITY_HOLDER, side);
+        return (ITeslaConsumer) provider.getCapability(TeslaCapabilities.CAPABILITY_CONSUMER, side);
     }
     
     /**
@@ -202,7 +202,7 @@ public class TeslaUtils {
      */
     public static ITeslaProducer getTeslaProducer (ICapabilityProvider provider, EnumFacing side) {
         
-        return (ITeslaProducer) provider.getCapability(TeslaCapabilities.CAPABILITY_HOLDER, side);
+        return (ITeslaProducer) provider.getCapability(TeslaCapabilities.CAPABILITY_PRODUCER, side);
     }
     
     /**
