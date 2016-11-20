@@ -34,9 +34,9 @@ version = getVersionFromJava(file("src/main/java/net/darkhax/tesla/lib/Constants
 //Defines the MC environment information.
 minecraft {
 
-    version = "1.10.2-12.18.1.2018"
+    version = "1.11-13.19.0.2153"
     runDir = "run"
-    mappings = "snapshot_20160518"
+    mappings = "snapshot_20161120"
 }
 
 //Handles basic resources such as mcmod.info
@@ -90,7 +90,7 @@ String getVersionFromJava(File file) {
 
     file.write(outfile);
 
-    return "1.10.2-$release.$update.$patch.$build";
+    return "1.11-$release.$update.$patch.$build";
 }
 
 //Creates the source jar.
@@ -167,7 +167,7 @@ curseforge {
         releaseType = "alpha";
         changelog = "All changes can be found here: https://github.com/Darkhax-Minecraft/TESLA/commits/master";
 
-        addGameVersion "1.10.2"
+        addGameVersion "1.11"
         
         addArtifact(deobfJar)
         addArtifact(sourcesJar)
