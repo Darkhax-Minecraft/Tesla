@@ -22,7 +22,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-@Mod(modid = "teslatest", name = "Tesla Test", version = "1.0.0.0", acceptedMinecraftVersions = "[1.9.4,1.10.2]")
+@Mod(modid = "teslatest", name = "Tesla Test", version = "1.0.0.0")
 public class TeslaTest {
     
     @SidedProxy(serverSide = "net.darkhax.teslatest.common.ProxyCommon", clientSide = "net.darkhax.teslatest.client.ProxyClient")

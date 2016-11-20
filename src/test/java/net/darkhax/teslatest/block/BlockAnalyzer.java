@@ -32,9 +32,9 @@ public class BlockAnalyzer extends BlockContainer {
         this.setCreativeTab(TeslaTest.tab);
         this.setUnlocalizedName("teslatest.analyzer");
     }
-    
+
     @Override
-    public boolean onBlockActivated (World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated (World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
         
         if (!worldIn.isRemote) {
             
@@ -47,7 +47,7 @@ public class BlockAnalyzer extends BlockContainer {
             }
         }
         
-        return super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
+        return super.onBlockActivated(worldIn, pos, state, playerIn, hand, side, hitX, hitY, hitZ);
     }
     
     @Override
