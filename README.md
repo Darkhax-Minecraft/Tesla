@@ -2,14 +2,17 @@ TESLA
 =========
 Tesla is a power API for minecraft that can be used by various mods to interact with eachother over power networks.
 
-##Dependency Management
-If you are using [Gradle](https://gradle.org) to manage your dependencies, add the following into your `build.gradle` file. Make sure to replace the version with the correct one. All versions can be viewed [here](http://maven.epoxide.xyz/net/darkhax/tesla/Tesla/).
+[![Nodecraft](https://i.imgur.com/sz9PUmK.png)](https://nodecraft.com/r/darkhax)    
+This project is sponsored by Nodecraft. Use code [Darkhax](https://nodecraft.com/r/darkhax) for 30% off your first month of service!
+
+## Dependency Management
+If you are using [Gradle](https://gradle.org) to manage your dependencies, add the following into your `build.gradle` file. Make sure to replace the version with the correct one.
 ```
 repositories {
 
     maven {
       
-        url 'http://maven.epoxide.xyz'
+        url 'http://maven.epoxide.org'
     }
 }
 
@@ -17,22 +20,6 @@ dependencies {
 
     compile "net.darkhax.tesla:Tesla:PUT_VERSION_HERE"
 }
-```
-
-Alternatively, if you are using [Maven](https://maven.apache.org/download.cgi) to manage your dependencies. Add the following into your `pom.xml` file. Make sure to replace the version with the correct one. Again, all versions can be found [here](http://maven.epoxide.xyz/net/darkhax/tesla/Tesla/).
-```
-<repositories>
-    <repository>
-        <id>epoxide.xyz</id>
-        <url>http://maven.epoxide.xyz</url>
-    </repository>
-</repositories>
-
-<dependency>
-     <groupId>net.darkhax.tesla</groupId>
-     <artifactId>Tesla</artifactId>
-     <version>PUT_VERSION_HERE</version>
-</dependency>
 ```
 
 Frequently Asked Questions
