@@ -52,7 +52,7 @@ public class TeslaUtils {
     public static final long TERATESLA = 1000000000000L;
 
     /**
-     * The amount of Tesla in a PentaTesla. One Quadrillion.
+     * The amount of Tesla in a PetaTesla. One Quadrillion.
      */
     public static final long PETATESLA = 1000000000000000L;
     
