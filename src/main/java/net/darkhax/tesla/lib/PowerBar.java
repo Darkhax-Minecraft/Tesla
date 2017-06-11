@@ -52,7 +52,7 @@ public class PowerBar {
      * @param y The y position of the power bar on the screen.
      * @param type The background type to use for the power bar.
      */
-    public PowerBar(GuiScreen screen, int x, int y, BackgroundType type) {
+    public PowerBar (GuiScreen screen, int x, int y, BackgroundType type) {
 
         this.background = type;
         this.screen = screen;
@@ -67,7 +67,7 @@ public class PowerBar {
      */
     public void draw (ITeslaHolder holder) {
 
-        draw(holder.getStoredPower(), holder.getCapacity());
+        this.draw(holder.getStoredPower(), holder.getCapacity());
     }
 
     /**
@@ -78,32 +78,33 @@ public class PowerBar {
      */
     public void draw (long power, long capacity) {
 
-        screen.mc.getTextureManager().bindTexture(TEXTURE_SHEET);
+        this.screen.mc.getTextureManager().bindTexture(TEXTURE_SHEET);
 
-        if (this.background == BackgroundType.LIGHT)
-            screen.drawTexturedModalRect(x, y, 3, 1, WIDTH, HEIGHT);
+        if (this.background == BackgroundType.LIGHT) {
+            this.screen.drawTexturedModalRect(this.x, this.y, 3, 1, WIDTH, HEIGHT);
+        }
+        else if (this.background == BackgroundType.DARK) {
+            this.screen.drawTexturedModalRect(this.x, this.y, 3, 53, WIDTH, HEIGHT);
+        }
 
-        else if (this.background == BackgroundType.DARK)
-            screen.drawTexturedModalRect(x, y, 3, 53, WIDTH, HEIGHT);
-
-        long powerOffset = (power * (HEIGHT + 1)) / capacity;
-        screen.drawTexturedModalRect(x + 1, (int) (y + HEIGHT - powerOffset), 18, (int) ((HEIGHT + 1) - powerOffset), WIDTH, (int) (powerOffset + 2));
+        final long powerOffset = power * (HEIGHT + 1) / capacity;
+        this.screen.drawTexturedModalRect(this.x + 1, (int) (this.y + HEIGHT - powerOffset), 18, (int) (HEIGHT + 1 - powerOffset), WIDTH, (int) (powerOffset + 2));
     }
 
     /**
      * @return The x position of the power bar on the screen.
      */
-    public int getX() {
+    public int getX () {
 
-        return x;
+        return this.x;
     }
 
     /**
      * @return The y position of the power bar on the screen.
      */
-    public int getY() {
+    public int getY () {
 
-        return y;
+        return this.y;
     }
 
     /**

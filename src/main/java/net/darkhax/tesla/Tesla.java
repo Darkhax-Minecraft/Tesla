@@ -14,12 +14,12 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = "tesla", name = "Tesla", version = "@VERSION@")
 public class Tesla {
-    
+
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
-        
-        CapabilityManager.INSTANCE.register(ITeslaConsumer.class, new CapabilityTeslaConsumer<ITeslaConsumer>(), BaseTeslaContainer.class);
-        CapabilityManager.INSTANCE.register(ITeslaProducer.class, new CapabilityTeslaProducer<ITeslaProducer>(), BaseTeslaContainer.class);
-        CapabilityManager.INSTANCE.register(ITeslaHolder.class, new CapabilityTeslaHolder<ITeslaHolder>(), BaseTeslaContainer.class);
+
+        CapabilityManager.INSTANCE.register(ITeslaConsumer.class, new CapabilityTeslaConsumer<>(), BaseTeslaContainer.class);
+        CapabilityManager.INSTANCE.register(ITeslaProducer.class, new CapabilityTeslaProducer<>(), BaseTeslaContainer.class);
+        CapabilityManager.INSTANCE.register(ITeslaHolder.class, new CapabilityTeslaHolder<>(), BaseTeslaContainer.class);
     }
 }

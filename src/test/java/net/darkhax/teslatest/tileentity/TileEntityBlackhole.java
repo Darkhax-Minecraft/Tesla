@@ -10,23 +10,25 @@ import net.minecraftforge.common.capabilities.Capability;
  * A TileEntity that can consume unlimited amounts of tesla power.
  */
 public class TileEntityBlackhole extends TileEntity {
-    
+
     @Override
     @SuppressWarnings("unchecked")
     public <T> T getCapability (Capability<T> capability, EnumFacing facing) {
-        
-        if (capability == TeslaCapabilities.CAPABILITY_CONSUMER)
+
+        if (capability == TeslaCapabilities.CAPABILITY_CONSUMER) {
             return (T) new InfiniteTeslaConsumer();
-            
+        }
+
         return super.getCapability(capability, facing);
     }
-    
+
     @Override
     public boolean hasCapability (Capability<?> capability, EnumFacing facing) {
-        
-        if (capability == TeslaCapabilities.CAPABILITY_CONSUMER)
+
+        if (capability == TeslaCapabilities.CAPABILITY_CONSUMER) {
             return true;
-            
+        }
+
         return super.hasCapability(capability, facing);
     }
 }

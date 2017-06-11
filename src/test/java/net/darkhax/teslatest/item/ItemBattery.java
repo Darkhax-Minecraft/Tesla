@@ -7,7 +7,6 @@ import net.darkhax.tesla.api.implementation.BaseTeslaContainerProvider;
 import net.darkhax.tesla.lib.TeslaUtils;
 import net.darkhax.teslatest.TeslaTest;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -20,23 +19,23 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
  * example of how to write a Item that can use Tesla power.
  */
 public class ItemBattery extends Item {
-    
-    public ItemBattery() {
-        
+
+    public ItemBattery () {
+
         this.setCreativeTab(TeslaTest.tab);
         this.setUnlocalizedName("teslatest.battery");
         this.setMaxStackSize(1);
     }
-    
+
     @Override
     public void addInformation (ItemStack stack, World world, List<String> tooltip, ITooltipFlag type) {
-        
+
         TeslaUtils.createTooltip(stack, tooltip);
     }
-    
+
     @Override
     public ICapabilityProvider initCapabilities (ItemStack stack, NBTTagCompound nbt) {
-        
+
         return new BaseTeslaContainerProvider(new BaseTeslaContainer());
     }
 }

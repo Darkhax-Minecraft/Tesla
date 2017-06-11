@@ -10,23 +10,23 @@ import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.world.World;
 
 public class BlockCreativePower extends BlockContainer {
-    
-    public BlockCreativePower() {
-        
+
+    public BlockCreativePower () {
+
         super(Material.ROCK);
         this.setCreativeTab(TeslaTest.tab);
         this.setUnlocalizedName("teslatest.power");
     }
-    
+
     @Override
     public TileEntity createNewTileEntity (World worldIn, int meta) {
-        
+
         return new TileEntityCreativePower();
     }
-    
+
     @Override
     public EnumBlockRenderType getRenderType (IBlockState state) {
-        
+
         return EnumBlockRenderType.MODEL;
     }
 }

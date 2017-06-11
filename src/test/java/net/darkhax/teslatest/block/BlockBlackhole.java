@@ -10,23 +10,23 @@ import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.world.World;
 
 public class BlockBlackhole extends BlockContainer {
-    
-    public BlockBlackhole() {
-        
+
+    public BlockBlackhole () {
+
         super(Material.ROCK);
         this.setCreativeTab(TeslaTest.tab);
         this.setUnlocalizedName("teslatest.blackhole");
     }
-    
+
     @Override
     public TileEntity createNewTileEntity (World worldIn, int meta) {
-        
+
         return new TileEntityBlackhole();
     }
-    
+
     @Override
     public EnumBlockRenderType getRenderType (IBlockState state) {
-        
+
         return EnumBlockRenderType.MODEL;
     }
 }
