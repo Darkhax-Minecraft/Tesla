@@ -7,17 +7,13 @@ import net.darkhax.tesla.api.implementation.BaseTeslaContainer;
 import net.darkhax.tesla.capability.TeslaCapabilities.CapabilityTeslaConsumer;
 import net.darkhax.tesla.capability.TeslaCapabilities.CapabilityTeslaHolder;
 import net.darkhax.tesla.capability.TeslaCapabilities.CapabilityTeslaProducer;
-import net.darkhax.tesla.lib.Constants;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = Constants.MOD_ID, name = Constants.MOD_NAME, version = Constants.VERSION_NUMBER)
+@Mod(modid = "tesla", name = "Tesla", version = "@VERSION@")
 public class Tesla {
-    
-    @Mod.Instance(Constants.MOD_ID)
-    public static Tesla instance;
     
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
