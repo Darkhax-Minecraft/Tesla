@@ -22,6 +22,7 @@ buildscript {
     }
 }
 
+apply plugin: "maven"
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: "com.matthewprenger.cursegradle"
 
@@ -124,6 +125,17 @@ task createJavadoc(type: Jar, dependsOn: javadoc) {
 
     from javadoc.destinationDir
     classifier = 'javadoc'
+}
+
+uploadArchives {
+
+    repositories {
+
+        mavenDeployer {
+
+            repository(url: "file:///var/www/html/maven")
+        }
+    }
 }
 
 curseforge {
