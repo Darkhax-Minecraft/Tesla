@@ -1,7 +1,7 @@
 package net.darkhax.teslatest.creativetab;
 
-import net.darkhax.teslatest.TeslaTest;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class CreativeTabTesla extends CreativeTabs {
@@ -14,6 +14,6 @@ public class CreativeTabTesla extends CreativeTabs {
     @Override
     public ItemStack getTabIconItem () {
 
-        return new ItemStack(TeslaTest.creativeCell);
+        return new ItemStack(Items.STICK);
     }
 }

@@ -1,5 +1,8 @@
 package net.darkhax.teslatest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.darkhax.teslatest.block.BlockAnalyzer;
 import net.darkhax.teslatest.block.BlockBlackhole;
 import net.darkhax.teslatest.block.BlockCreativePower;
@@ -16,10 +19,14 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod(modid = "teslatest", name = "Tesla Test", version = "1.0.0.0")
@@ -41,6 +48,9 @@ public class TeslaTest {
     public static Item batteryBlackhole;
     public static Item batteryCreative;
 
+    public static List<Item> items = new ArrayList<>();
+    public static List<Block> blocks = new ArrayList<>();
+    
     @EventHandler
     public void preInit (FMLPreInitializationEvent event) {
 
@@ -55,21 +65,43 @@ public class TeslaTest {
         batteryCreative = registerItem(new ItemBatteryCreative(), "battery_creative");
 
         proxy.preInit();
+        
+        MinecraftForge.EVENT_BUS.register(this);
+    }
+    
+    @SubscribeEvent
+    public void registerItem(Register<Item> event) {
+        
+        for (Item item : items) {
+            
+            event.getRegistry().register(item);;
+        }
     }
 
+    @SubscribeEvent
+    public void registerBlock(Register<Block> event) {
+        
+        for (Block block : blocks) {
+            
+            event.getRegistry().register(block);
+        }
+    }
+    
     public static Block registerBlock (Block block, Class<? extends TileEntity> tileEntityClass, String name) {
 
         block.setRegistryName(name);
-        GameRegistry.register(block);
-        GameRegistry.register(new ItemBlock(block), block.getRegistryName());
         GameRegistry.registerTileEntity(tileEntityClass, block.getRegistryName().toString());
+        block.setCreativeTab(tab);
+        registerItem(new ItemBlock(block), name);
+        blocks.add(block);
         return block;
     }
 
     public static Item registerItem (Item item, String name) {
 
         item.setRegistryName(name);
-        GameRegistry.register(item);
+        item.setCreativeTab(tab);
+        items.add(item);
         return item;
     }
 }
