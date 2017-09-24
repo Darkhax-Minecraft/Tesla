@@ -12,13 +12,13 @@ repositories {
 
     maven {
       
-        url 'http://maven.epoxide.org'
+        url 'http://maven.mcmoddev.com'
     }
 }
 
 dependencies {
 
-    compile "net.darkhax.tesla:Tesla:PUT_VERSION_HERE"
+    compile "net.darkhax.tesla:Tesla-PUT_MC_VERSION_HERE:PUT_VERSION_HERE"
 }
 ```
 
