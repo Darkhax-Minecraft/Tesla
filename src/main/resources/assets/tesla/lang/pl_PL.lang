@@ -1,0 +1,16 @@
+#Polish translations for Tesla by Kaperios
+
+#Energy Units
+unit.tesla.t=Tesla
+unit.tesla.kt=KiloTesla
+unit.tesla.mt=MegaTesla
+unit.tesla.gt=GigaTesla
+unit.tesla.tt=TeraTesla
+unit.tesla.pt=PetaTesla
+unit.tesla.et=ExaTesla
+
+#Tooltips
+tooltip.tesla.showinfo=Nacisnij %s%s%s, aby uzyskac wiecej informacji.
+tooltip.tesla.powerinfo=%s/%s Tesla
+tooltip.tesla.output=Wyjscie: %s Tesla/t
+tooltip.tesla.input=Wejscie: %s Tesla/t
