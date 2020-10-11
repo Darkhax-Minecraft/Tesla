@@ -1,0 +1,16 @@
+#Terjemahan Bahasa Indonesia untuk Tesla
+
+#Unit Energi
+unit.tesla.t=Tesla
+unit.tesla.kt=KiloTesla
+unit.tesla.mt=MegaTesla
+unit.tesla.gt=GigaTesla
+unit.tesla.tt=TeraTesla
+unit.tesla.pt=PetaTesla
+unit.tesla.et=ExaTesla
+
+#Petunjuk
+tooltip.tesla.showinfo=Klik %s%s%s untuk informasi selengkapnya.
+tooltip.tesla.powerinfo=%s/%s Tesla
+tooltip.tesla.output=Output: %s Tesla/t
+tooltip.tesla.input=Input: %s Tesla/t
