@@ -12,7 +12,7 @@ repositories {
 
     maven {
       
-        url 'http://maven.mcmoddev.com'
+        url 'https://maven.blamejared.com'
     }
 }
 
